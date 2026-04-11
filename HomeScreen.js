@@ -5,7 +5,9 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ShoppingBag, Search, ShoppingCart, Heart, User, MapPin, Plus } from 'lucide-react-native';
-
+<Text style={{ position: 'absolute', top: 5, right: 5, color: 'red' }}>
+  NEW
+</Text>
 // 🔥 IMPORT STORAGE
 import { getCart, saveCart } from './services/storageService';
 
