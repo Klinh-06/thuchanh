@@ -46,7 +46,7 @@ export default function MobileNumberScreen({ onBack, onNext }) {
 
       {/* 2. Thành phần đồ họa nền (Top Background) */}
       <Image 
-        source={require('./assets/anhnen.png')} 
+        source={require('../assets/anhnen.png')} 
         style={styles.topImage} 
         resizeMode="cover"
       />
@@ -116,7 +116,7 @@ export default function MobileNumberScreen({ onBack, onNext }) {
                   disabled={phoneNumber.length < 10}
                 >
                   <Image 
-                    source={require('./assets/button.png')} 
+                    source={require('../assets/button.png')} 
                     style={styles.buttonImage} 
                   />
                 </TouchableOpacity>

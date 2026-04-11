@@ -8,12 +8,12 @@ import { ChevronLeft, SlidersHorizontal, Plus } from 'lucide-react-native';
 const { width } = Dimensions.get('window');
 
 const beveragesData = [
-  { id: 1, name: 'Diet Coke', weight: '355ml', price: '$1.99', image: require('./assets/coke.png') },
-  { id: 2, name: 'Sprite Can', weight: '325ml', price: '$1.50', image: require('./assets/sprite.png') },
-  { id: 3, name: 'Apple & Grape Juice', weight: '2L', price: '$15.99', image: require('./assets/appjuice.png') },
-  { id: 4, name: 'Orange Juice', weight: '2L', price: '$15.99', image: require('./assets/orange_juice.png') },
-  { id: 5, name: 'Coca Cola Can', weight: '325ml', price: '$4.99', image: require('./assets/coca.png') },
-  { id: 6, name: 'Pepsi Can', weight: '330ml', price: '$4.99', image: require('./assets/pepsi.png') },
+  { id: 1, name: 'Diet Coke', weight: '355ml', price: '$1.99', image: require('../assets/coke.png') },
+  { id: 2, name: 'Sprite Can', weight: '325ml', price: '$1.50', image: require('../assets/sprite.png') },
+  { id: 3, name: 'Apple & Grape Juice', weight: '2L', price: '$15.99', image: require('../assets/appjuice.png') },
+  { id: 4, name: 'Orange Juice', weight: '2L', price: '$15.99', image: require('../assets/orange_juice.png') },
+  { id: 5, name: 'Coca Cola Can', weight: '325ml', price: '$4.99', image: require('../assets/coca.png') },
+  { id: 6, name: 'Pepsi Can', weight: '330ml', price: '$4.99', image: require('../assets/pepsi.png') },
 ];
 
 const BeveragesScreen = ({ navigation }) => {

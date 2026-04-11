@@ -62,7 +62,7 @@ export default function VerificationScreen({ onBack, onVerify }) {
 
       {/* Background top */}
       <Image 
-        source={require('./assets/anhnen.png')} 
+        source={require('../assets/anhnen.png')} 
         style={styles.topImage} 
         resizeMode="cover"
       />
@@ -112,7 +112,7 @@ export default function VerificationScreen({ onBack, onVerify }) {
             disabled={otp.length < 4}
           >
             <Image 
-              source={require('./assets/button.png')} 
+              source={require('../assets/button.png')} 
               style={[
                 styles.buttonImage, 
                 { opacity: otp.length === 4 ? 1 : 0.5 }

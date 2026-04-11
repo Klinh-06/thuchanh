@@ -18,8 +18,8 @@ import {
   User
 } from 'lucide-react-native';
 
-import { productsData } from './data';
-import ErrorModal from './Error';
+import { productsData } from '../data';
+import ErrorModal from '../components/Error';
 
 const FavoriteScreen = ({ navigation }) => {
   const [errorVisible, setErrorVisible] = useState(false);
@@ -190,13 +190,13 @@ const styles = StyleSheet.create({
   addButton: {
     position: 'absolute',
     bottom: 100,
-    width: 360,
+    left: 25,
+    right: 25,
     height: 60,
     backgroundColor: '#53B175',
     borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center'
   },
 
   addButtonText: {

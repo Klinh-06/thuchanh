@@ -5,11 +5,9 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ShoppingBag, Search, ShoppingCart, Heart, User, MapPin, Plus } from 'lucide-react-native';
-<Text style={{ position: 'absolute', top: 5, right: 5, color: 'red' }}>
-  NEW
-</Text>
+
 // 🔥 IMPORT STORAGE
-import { getCart, saveCart } from './services/storageService';
+import { getCart, saveCart } from '../services/storageService';
 
 const { width } = Dimensions.get('window');
 
@@ -17,12 +15,12 @@ const HomeScreen = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState('Shop');
 
   const hinhAnh = {
-    logo_ca_rot: require('./assets/carrot.png'),
-    anh_banner: require('./assets/banner.png'),
-    chuoi_huu_co: require('./assets/chuoi.png'),
-    tao_do: require('./assets/tao.png'),
-    ot_chuong_do: require('./assets/ot.png'),
-    gung_tuoi: require('./assets/gung.png'),
+    logo_ca_rot: require('../assets/carrot.png'),
+    anh_banner: require('../assets/banner.png'),
+    chuoi_huu_co: require('../assets/chuoi.png'),
+    tao_do: require('../assets/tao.png'),
+    ot_chuong_do: require('../assets/ot.png'),
+    gung_tuoi: require('../assets/gung.png'),
   };
 
   // 🔥 ADD TO CART

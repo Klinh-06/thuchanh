@@ -8,29 +8,27 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { getUser, saveUser, removeUser } from './services/storageService';
 
 // ===== AUTH =====
-import SplashScreen from './SplashScreen';
-import OnboardingScreen from './OnboardingScreen';
-import SignInScreen from './SignInScreen';
-import MobileNumberScreen from './MobileNumberScreen';
-import VerificationScreen from './VerificationScreen';
-import SelectLocationScreen from './SelectLocationScreen';
-import LoginScreen from './LoginScreen';
-import SignupScreen from './SignupScreen';
+import SplashScreen from './screens/SplashScreen';
+import OnboardingScreen from './screens/OnboardingScreen';
+import SignInScreen from './screens/SignInScreen';
+import MobileNumberScreen from './screens/MobileNumberScreen';
+import VerificationScreen from './screens/VerificationScreen';
+import SelectLocationScreen from './screens/SelectLocationScreen';
+import LoginScreen from './screens/LoginScreen';
+import SignupScreen from './screens/SignupScreen';
 
 // ===== MAIN =====
-import HomeScreen from './HomeScreen';
-import ExploreScreen from './ExploreScreen';
-import BeveragesScreen from './BeveragesScreen';
-import SearchScreen from './SearchScreen';
-import FilterScreen from './FilterScreen';
-import CartScreen from './CartScreen';
-import FavoriteScreen from './FavoriteScreen';
-import OrderAcceptedScreen from './OrderAcceptedScreen';
-import AccountScreen from './AccountScreen';
-import OrdersScreen from './OrdersScreen';
-
-// 🔥 FIX QUAN TRỌNG
-import ProductDetail from './ProductDetail';
+import HomeScreen from './screens/HomeScreen';
+import ExploreScreen from './screens/ExploreScreen';
+import BeveragesScreen from './screens/BeveragesScreen';
+import SearchScreen from './screens/SearchScreen';
+import FilterScreen from './screens/FilterScreen';
+import CartScreen from './screens/CartScreen';
+import FavoriteScreen from './screens/FavoriteScreen';
+import OrderAcceptedScreen from './screens/OrderAcceptedScreen';
+import AccountScreen from './screens/AccountScreen';
+import OrdersScreen from './screens/OrdersScreen';
+import ProductDetail from './screens/ProductDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -75,7 +73,12 @@ export default function App() {
     }
 
     if (screen === 'signin') {
-      return <SignInScreen onPhoneNumberPress={() => setScreen('number')} />;
+      return (
+        <SignInScreen
+          onPhoneNumberPress={() => setScreen('number')}
+          onSignInPress={() => setScreen('login')}
+        />
+      );
     }
 
     if (screen === 'number') {
@@ -126,7 +129,19 @@ export default function App() {
     }
 
     if (screen === 'signup') {
-      return <SignupScreen onLogin={() => setScreen('login')} />;
+      return (
+        <SignupScreen
+          onLogin={() => setScreen('login')}
+          onSignupSuccess={async (user) => {
+            try {
+              await saveUser(user);
+              setIsLoggedIn(true);
+            } catch (error) {
+              console.log('SIGNUP ERROR:', error);
+            }
+          }}
+        />
+      );
     }
 
     return null;
@@ -159,8 +174,8 @@ export default function App() {
                 onLogout={async () => {
                   try {
                     await removeUser();
+                    setScreen('login');
                     setIsLoggedIn(false);
-                    setScreen('onboarding');
                   } catch (error) {
                     console.log('LOGOUT ERROR:', error);
                   }

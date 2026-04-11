@@ -10,7 +10,7 @@ import {
 } from 'lucide-react-native';
 
 // Import dữ liệu từ data.js
-import { productsData } from './data'; 
+import { productsData } from '../data';
 
 const SearchScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('Egg');

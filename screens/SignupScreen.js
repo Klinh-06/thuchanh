@@ -17,7 +17,7 @@ import {
 
 const { width } = Dimensions.get('window');
 
-export default function SignupScreen({ onLogin }) {
+export default function SignupScreen({ onLogin, onSignupSuccess }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const [username, setUsername] = useState('');
@@ -30,7 +30,7 @@ export default function SignupScreen({ onLogin }) {
 
       {/* Background */}
       <Image
-        source={require('./assets/anhnen.png')}
+        source={require('../assets/anhnen.png')}
         style={styles.topImage}
         resizeMode="cover"
       />
@@ -46,7 +46,7 @@ export default function SignupScreen({ onLogin }) {
               {/* Logo */}
               <View style={styles.logoContainer}>
                 <Image
-                  source={require('./assets/carrot.png')}
+                  source={require('../assets/carrot.png')}
                   style={styles.logo}
                 />
               </View>
@@ -120,12 +120,25 @@ export default function SignupScreen({ onLogin }) {
                 {/* TERMS */}
                 <Text style={styles.terms}>
                   By continuing you agree to our{' '}
-                  <Text style={styles.link}>Terms of Service</Text>{'\n'}
-                  and <Text style={styles.link}>Privacy Policy</Text>.
+                  <Text style={styles.link}>Terms of Service</Text> and{' '}
+                  <Text style={styles.link}>Privacy Policy</Text>.
                 </Text>
 
                 {/* BUTTON SIGN UP */}
-                <TouchableOpacity style={styles.button} onPress={() => alert('Signed Up!')}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={async () => {
+                    if (!username || !email || !password) {
+                      alert('Vui lòng nhập đầy đủ thông tin');
+                      return;
+                    }
+                    await onSignupSuccess?.({
+                      name: username,
+                      email,
+                      token: 'demo-token',
+                    });
+                  }}
+                >
                   <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
 
@@ -232,11 +245,11 @@ const styles = StyleSheet.create({
 
   terms: {
     fontSize: 14,
-    lineHeight: 15,
-    letterSpacing: 0.7,
+    lineHeight: 20,
     color: '#7C7C7C',
     textAlign: 'center',
     marginBottom: 20,
+    paddingHorizontal: 10,
   },
 
   link: {

@@ -73,16 +73,15 @@ const styles = StyleSheet.create({
 
   // Thông số nút Apply Filter bạn yêu cầu
   applyButton: {
-    width: 364,
     height: 67,
     backgroundColor: '#53B175',
     borderRadius: 19,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    bottom: 40, // Khoảng cách thực tế để hiển thị đẹp trên mobile
+    bottom: 40,
     left: 25,
-    opacity: 1,
+    right: 25,
   },
   applyButtonText: { color: '#FFF', fontSize: 18, fontWeight: '600' }
 });

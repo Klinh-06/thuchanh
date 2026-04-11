@@ -24,7 +24,7 @@ export default function SelectLocationScreen({ onBack, onNext }) {
 
       {/* Background */}
       <Image 
-        source={require('./assets/anhnen.png')} 
+        source={require('../assets/anhnen.png')} 
         style={styles.topImage} 
         resizeMode="cover"
       />
@@ -50,7 +50,7 @@ export default function SelectLocationScreen({ onBack, onNext }) {
 
                 {/* Illustration */}
                 <Image 
-                  source={require('./assets/location.png')} 
+                  source={require('../assets/location.png')} 
                   style={styles.illustration}
                 />
 
@@ -218,12 +218,12 @@ const styles = StyleSheet.create({
   footer: {
     flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'center',
+    paddingHorizontal: 25,
     paddingBottom: 40,
   },
 
   button: {
-    width: 364,
+    width: '100%',
     height: 67,
     backgroundColor: '#53B175',
     borderRadius: 19,

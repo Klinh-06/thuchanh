@@ -5,7 +5,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronRight, LogOut, ShoppingBag, Search, ShoppingCart, Heart, User } from 'lucide-react-native';
 
-import { getUser } from './services/storageService';
+import { getUser } from '../services/storageService';
 
 const AccountScreen = ({ navigation, onLogout }) => {
 
@@ -21,14 +21,14 @@ const AccountScreen = ({ navigation, onLogout }) => {
   }, []);
 
   const menuItems = [
-    { id: '1', title: 'Orders', icon: require('./assets/order.png') },
-    { id: '2', title: 'My Details', icon: require('./assets/detail.png') },
-    { id: '3', title: 'Delivery Address', icon: require('./assets/address.png') },
-    { id: '4', title: 'Payment Methods', icon: require('./assets/payment.png') },
-    { id: '5', title: 'Promo Card', icon: require('./assets/card.png') },
-    { id: '6', title: 'Notifications', icon: require('./assets/noti.png') },
-    { id: '7', title: 'Help', icon: require('./assets/help.png') },
-    { id: '8', title: 'About', icon: require('./assets/about.png') },
+    { id: '1', title: 'Orders', icon: require('../assets/order.png') },
+    { id: '2', title: 'My Details', icon: require('../assets/detail.png') },
+    { id: '3', title: 'Delivery Address', icon: require('../assets/address.png') },
+    { id: '4', title: 'Payment Methods', icon: require('../assets/payment.png') },
+    { id: '5', title: 'Promo Card', icon: require('../assets/card.png') },
+    { id: '6', title: 'Notifications', icon: require('../assets/noti.png') },
+    { id: '7', title: 'Help', icon: require('../assets/help.png') },
+    { id: '8', title: 'About', icon: require('../assets/about.png') },
   ];
 
   return (
@@ -40,7 +40,7 @@ const AccountScreen = ({ navigation, onLogout }) => {
 
           {/* HEADER */}
           <View style={styles.header}>
-            <Image source={require('./assets/avt.png')} style={styles.avatar} />
+            <Image source={require('../assets/avt.png')} style={styles.avatar} />
             <View style={styles.userInfo}>
               <View style={styles.nameRow}>
                 <Text style={styles.userName}>
@@ -78,17 +78,16 @@ const AccountScreen = ({ navigation, onLogout }) => {
           ))}
 
           {/* LOG OUT */}
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.logOutBtn}
+            activeOpacity={0.8}
             onPress={async () => {
               console.log('Logging out...');
-              await onLogout();
+              await onLogout?.();
             }}
           >
-            <View style={styles.logOutContent}>
-              <LogOut color="#53B175" size={22} style={styles.logOutIcon} />
-              <Text style={styles.logOutText}>Log Out</Text>
-            </View>
+            <LogOut color="#53B175" size={22} />
+            <Text style={styles.logOutText}>Log Out</Text>
           </TouchableOpacity>
 
         </ScrollView>
@@ -168,27 +167,21 @@ const styles = StyleSheet.create({
   menuTitle: { marginLeft: 20, fontSize: 18, color: '#181725' },
 
   logOutBtn: {
-    width: 364,
     height: 67,
     backgroundColor: '#F2F3F2',
     borderRadius: 19,
-    alignSelf: 'center',
+    marginHorizontal: 25,
     marginTop: 30,
-    justifyContent: 'center'
-  },
-
-  logOutContent: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center'
   },
-
-  logOutIcon: { position: 'absolute', left: 25 },
 
   logOutText: {
     color: '#53B175',
     fontSize: 18,
-    fontWeight: '600'
+    fontWeight: '600',
+    marginLeft: 12,
   },
 
   bottomMenu: {

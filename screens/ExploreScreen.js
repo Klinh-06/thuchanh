@@ -21,12 +21,12 @@ import {
 const { width } = Dimensions.get('window');
 
 const categories = [
-  { name: 'Fresh Fruits\n& Vegetable', image: require('./assets/raucu.png'), color: '#EEF8F2', border: '#53B175' },
-  { name: 'Cooking Oil\n& Ghee', image: require('./assets/dau.png'), color: '#FFF6EE', border: '#F8A44C' },
-  { name: 'Meat & Fish', image: require('./assets/thit.png'), color: '#FDE9E7', border: '#F7A593' },
-  { name: 'Bakery & Snacks', image: require('./assets/banh_mi.png'), color: '#F4EBF7', border: '#D3B0E0' },
-  { name: 'Dairy & Eggs', image: require('./assets/trung.png'), color: '#FFF9E5', border: '#FDE598' },
-  { name: 'Beverages', image: require('./assets/nuoc_ngot.png'), color: '#EDF7FC', border: '#B7DFF5' },
+  { name: 'Fresh Fruits\n& Vegetable', image: require('../assets/raucu.png'), color: '#EEF8F2', border: '#53B175' },
+  { name: 'Cooking Oil\n& Ghee', image: require('../assets/dau.png'), color: '#FFF6EE', border: '#F8A44C' },
+  { name: 'Meat & Fish', image: require('../assets/thit.png'), color: '#FDE9E7', border: '#F7A593' },
+  { name: 'Bakery & Snacks', image: require('../assets/banh_mi.png'), color: '#F4EBF7', border: '#D3B0E0' },
+  { name: 'Dairy & Eggs', image: require('../assets/trung.png'), color: '#FFF9E5', border: '#FDE598' },
+  { name: 'Beverages', image: require('../assets/nuoc_ngot.png'), color: '#EDF7FC', border: '#B7DFF5' },
 ];
 
 const ExploreScreen = ({ navigation }) => {

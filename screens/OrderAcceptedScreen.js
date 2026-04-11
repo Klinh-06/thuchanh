@@ -13,7 +13,7 @@ const OrderAcceptedScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('./assets/bg.png')}
+        source={require('../assets/bg.png')}
         style={styles.background}
       >
         <SafeAreaView style={styles.safeArea}>
@@ -21,7 +21,7 @@ const OrderAcceptedScreen = ({ navigation }) => {
           {/* TOP CONTENT */}
           <View style={styles.contentTop}>
             <Image
-              source={require('./assets/button.png')}
+              source={require('../assets/button.png')}
               style={styles.checkIcon}
               resizeMode="contain"
             />
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
 
   trackOrderBtn: {
-    width: 364,
+    width: '100%',
     height: 67,
     backgroundColor: '#53B175',
     borderRadius: 19,

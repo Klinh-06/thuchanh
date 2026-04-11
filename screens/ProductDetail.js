@@ -30,7 +30,7 @@ export default function ProductDetail({ navigation, route }) {
 
   const name = params.name ?? "Natural Apple";
   const price = params.price ?? "$4.99";
-  const image = params.image ?? require('./assets/tao.png');
+  const image = params.image ?? require('../assets/tao.png');
 
   const [qty, setQty] = useState(1);
   const [fav, setFav] = useState(false);

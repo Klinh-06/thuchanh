@@ -19,7 +19,7 @@ const ErrorModal = ({ visible, onClose, navigation }) => {
 
           {/* Ảnh túi đồ ăn lỗi fail.png */}
           <Image 
-            source={require('./assets/fail.png')} 
+            source={require('../assets/fail.png')} 
             style={styles.image} 
             resizeMode="contain" 
           />
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: 364,
+    width: '90%',
+    maxWidth: 400,
     backgroundColor: '#FFF',
     borderRadius: 20,
     padding: 25,
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   actionBtn: {
-    width: 313,
+    width: '100%',
     height: 67,
     backgroundColor: '#53B175',
     borderRadius: 19,

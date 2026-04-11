@@ -71,21 +71,24 @@ export const getOrders = async () => {
   }
 };
 
-// 🔥 FIX: order chuẩn hơn
-export const saveOrder = async (order) => {
+// Order schema: { id, createdAt, items, total }
+export const saveOrder = async ({ items, total }) => {
   try {
     const oldOrders = await getOrders();
 
     const newOrder = {
-      ...order,
       id: Date.now(),
-      date: new Date().toLocaleString(),
+      createdAt: new Date().toLocaleString(),
+      items,
+      total,
     };
 
     const newOrders = [newOrder, ...oldOrders];
 
     await AsyncStorage.setItem(ORDER_KEY, JSON.stringify(newOrders));
+    return newOrder;
   } catch (err) {
     console.log('saveOrder error:', err);
+    return null;
   }
 };

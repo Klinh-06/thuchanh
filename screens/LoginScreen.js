@@ -49,7 +49,7 @@ export default function LoginScreen({ onSignup, onLoginSuccess }) {
       <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
 
       <Image
-        source={require('./assets/anhnen.png')}
+        source={require('../assets/anhnen.png')}
         style={styles.topImage}
         resizeMode="cover"
       />
@@ -64,7 +64,7 @@ export default function LoginScreen({ onSignup, onLoginSuccess }) {
 
               <View style={styles.logoContainer}>
                 <Image
-                  source={require('./assets/carrot.png')}
+                  source={require('../assets/carrot.png')}
                   style={styles.logo}
                 />
               </View>
@@ -93,9 +93,9 @@ export default function LoginScreen({ onSignup, onLoginSuccess }) {
                 <View style={styles.inputGroup}>
                   <Text style={styles.label}>Password</Text>
 
-                  <View style={styles.inputRow}>
+                  <View style={styles.passwordRow}>
                     <TextInput
-                      style={styles.textInput}
+                      style={styles.passwordInput}
                       placeholder="Enter your password"
                       placeholderTextColor="#B1B1B1"
                       value={password}
@@ -105,6 +105,7 @@ export default function LoginScreen({ onSignup, onLoginSuccess }) {
 
                     <TouchableOpacity
                       onPress={() => setShowPassword(!showPassword)}
+                      hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     >
                       <Image
                         source={{
@@ -154,21 +155,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     width: width,
-    height: 250,
+    height: 220,
   },
 
   logoContainer: {
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 60,
   },
 
   logo: {
-    width: 48,
-    height: 56,
+    width: 56,
+    height: 64,
   },
 
   content: {
-    marginTop: 80,
+    marginTop: 50,
     paddingHorizontal: 25,
   },
 
@@ -203,15 +204,24 @@ const styles = StyleSheet.create({
     color: '#181725',
   },
 
-  inputRow: {
+  passwordRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E2E2E2',
+    paddingBottom: 8,
+  },
+
+  passwordInput: {
+    flex: 1,
+    fontSize: 18,
+    color: '#181725',
+    padding: 0,
   },
 
   eyeIcon: {
-    width: 20,
-    height: 20,
+    width: 22,
+    height: 22,
     tintColor: '#7C7C7C',
     marginLeft: 10,
   },

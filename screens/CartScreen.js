@@ -19,8 +19,8 @@ import {
   User,
 } from 'lucide-react-native';
 
-import { getCart, saveCart, removeCart } from './services/storageService';
-import CheckoutModal from './CheckoutModal';
+import { getCart, saveCart, removeCart, saveOrder } from '../services/storageService';
+import CheckoutModal from '../components/CheckoutModal';
 
 const CartScreen = ({ navigation }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -76,6 +76,7 @@ const CartScreen = ({ navigation }) => {
   const handleCheckout = async () => {
     setCheckoutVisible(false);
 
+    await saveOrder({ items: cartItems, total: totalPrice });
     await removeCart();
     setCartItems([]);
 

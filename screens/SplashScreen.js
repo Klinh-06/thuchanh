@@ -7,7 +7,7 @@ export default function SplashScreen() {
       <StatusBar barStyle="light-content" backgroundColor="#53B175" />
 
       <Image
-        source={require('./assets/logo.png')}
+        source={require('../assets/logo.png')}
         style={styles.logo}
         resizeMode="contain"
       />

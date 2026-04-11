@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   View,
   Text,
@@ -7,7 +6,10 @@ import {
   StyleSheet,
   StatusBar,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
+
+const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
 export default function OnboardingScreen({ onGetStarted }) {
   return (
@@ -15,12 +17,14 @@ export default function OnboardingScreen({ onGetStarted }) {
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
 
       <ImageBackground
-        source={require('./assets/background.png')}
+        source={require('../assets/background.png')}
         style={styles.background}
+        imageStyle={styles.backgroundImage}
+        resizeMode="cover"
       >
         {/* Logo nhỏ */}
         <Image
-          source={require('./assets/carot.png')}
+          source={require('../assets/carot.png')}
           style={styles.logoSmall}
           resizeMode="contain"
         />
@@ -53,55 +57,46 @@ const styles = StyleSheet.create({
   },
 
   background: {
-    width: 414,
-    height: 896.35,
-    position: 'relative',
+    width: SCREEN_W,
+    height: SCREEN_H,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingHorizontal: 30,
+    paddingBottom: 60,
+  },
+  backgroundImage: {
+    width: SCREEN_W,
+    height: SCREEN_H,
   },
 
   logoSmall: {
     width: 48,
     height: 56,
-    position: 'absolute',
-    top: 480,
-    left: 183,
+    marginBottom: 16,
   },
 
   title: {
-    position: 'absolute',
-    top: 550,
-    left: 40,
-    width: 334,
-
     color: '#FFFFFF',
-    fontSize: 48,
+    fontSize: 42,
     fontWeight: '600',
     textAlign: 'center',
-    lineHeight: 56,
+    lineHeight: 50,
+    marginBottom: 12,
   },
 
   subtitle: {
-    position: 'absolute',
-    width: 295,
-
-    top: 682.28,
-    left: 59.5,
-
     color: '#FCFCFC',
     fontSize: 16,
     textAlign: 'center',
     opacity: 0.7,
+    marginBottom: 24,
   },
 
   button: {
-    width: 353,
+    width: '100%',
     height: 67,
     backgroundColor: '#53B175',
     borderRadius: 19,
-
-    position: 'absolute',
-    top: 720,
-    left: 30.5,
-
     justifyContent: 'center',
     alignItems: 'center',
   },

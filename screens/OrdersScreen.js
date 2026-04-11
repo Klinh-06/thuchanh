@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getOrders } from './services/storageService';
+import { getOrders } from '../services/storageService';
 
-const OrdersScreen = () => {
+const OrdersScreen = ({ navigation }) => {
   const [orders, setOrders] = useState([]);
 
+  const loadOrders = async () => {
+    try {
+      const data = await getOrders();
+
+      setOrders(
+        Array.isArray(data)
+          ? data.filter(o => o && o.id && o.items)
+          : []
+      );
+    } catch (error) {
+      console.log(error);
+      setOrders([]);
+    }
+  };
+
   useEffect(() => {
-    const loadOrders = async () => {
-      try {
-        const data = await getOrders();
-
-        setOrders(
-          Array.isArray(data)
-            ? data.filter(o => o && o.id && o.items)
-            : []
-        );
-      } catch (error) {
-        console.log(error);
-        setOrders([]);
-      }
-    };
-
     loadOrders();
-  }, []);
+    const unsubscribe = navigation?.addListener?.('focus', loadOrders);
+    return unsubscribe;
+  }, [navigation]);
 
   const renderOrder = ({ item }) => (
     <View style={styles.card}>
