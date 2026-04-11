@@ -52,6 +52,8 @@ thuchanh/
 ├── AccountScreen.js        # Logout
 └── services/
     └── storageService.js   # Toàn bộ hàm AsyncStorage (async/await + try/catch)
+└── Screenshot/             # Toàn bộ ảnh + video
+└── screens/                # Toàn bộ file js màn hình
 ```
 
 ## 3. Hướng dẫn chạy app
