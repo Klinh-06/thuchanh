@@ -5,20 +5,25 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronRight, LogOut, ShoppingBag, Search, ShoppingCart, Heart, User } from 'lucide-react-native';
 
-import { getUser } from '../services/storageService';
+import { getUser, getOrders } from '../services/storageService';
 
 const AccountScreen = ({ navigation, onLogout }) => {
 
   const [user, setUser] = useState(null);
+  const [orderCount, setOrderCount] = useState(0);
+
+  const loadData = async () => {
+    const u = await getUser();
+    setUser(u);
+    const orders = await getOrders();
+    setOrderCount(Array.isArray(orders) ? orders.length : 0);
+  };
 
   useEffect(() => {
-    const loadUser = async () => {
-      const data = await getUser();
-      setUser(data);
-    };
-
-    loadUser();
-  }, []);
+    loadData();
+    const unsubscribe = navigation?.addListener?.('focus', loadData);
+    return unsubscribe;
+  }, [navigation]);
 
   const menuItems = [
     { id: '1', title: 'Orders', icon: require('../assets/order.png') },
@@ -60,12 +65,12 @@ const AccountScreen = ({ navigation, onLogout }) => {
 
           {/* MENU */}
           {menuItems.map((item) => (
-            <TouchableOpacity 
-              key={item.id} 
+            <TouchableOpacity
+              key={item.id}
               style={styles.menuItem}
               onPress={() => {
                 if (item.title === 'Orders') {
-                  navigation.navigate('Orders'); // 🔥 FIX
+                  navigation.navigate('Orders');
                 }
               }}
             >
@@ -73,7 +78,15 @@ const AccountScreen = ({ navigation, onLogout }) => {
                 <Image source={item.icon} style={styles.iconImage} />
                 <Text style={styles.menuTitle}>{item.title}</Text>
               </View>
-              <ChevronRight color="#181725" size={20} />
+
+              <View style={styles.menuRight}>
+                {item.title === 'Orders' && orderCount > 0 && (
+                  <View style={styles.badge}>
+                    <Text style={styles.badgeText}>{orderCount}</Text>
+                  </View>
+                )}
+                <ChevronRight color="#181725" size={20} />
+              </View>
             </TouchableOpacity>
           ))}
 
@@ -161,6 +174,25 @@ const styles = StyleSheet.create({
   },
 
   menuLeft: { flexDirection: 'row', alignItems: 'center' },
+
+  menuRight: { flexDirection: 'row', alignItems: 'center' },
+
+  badge: {
+    minWidth: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#53B175',
+    paddingHorizontal: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 10,
+  },
+
+  badgeText: {
+    color: '#FFF',
+    fontSize: 12,
+    fontWeight: '700',
+  },
 
   iconImage: { width: 20, height: 20 },
 

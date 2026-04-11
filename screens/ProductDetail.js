@@ -21,6 +21,7 @@ import {
   ChevronRight,
   Star
 } from 'lucide-react-native';
+import { getCart, saveCart } from '../services/storageService';
 
 const { width, height } = Dimensions.get('window');
 
@@ -29,11 +30,42 @@ export default function ProductDetail({ navigation, route }) {
   const params = route?.params ?? {};
 
   const name = params.name ?? "Natural Apple";
+  const weight = params.weight ?? "1kg";
   const price = params.price ?? "$4.99";
   const image = params.image ?? require('../assets/tao.png');
 
   const [qty, setQty] = useState(1);
   const [fav, setFav] = useState(false);
+
+  const handleAddToBasket = async () => {
+    try {
+      let cart = await getCart();
+      if (!cart) cart = [];
+
+      const priceNum = typeof price === 'number'
+        ? price
+        : parseFloat(String(price).replace('$', ''));
+
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += qty;
+      } else {
+        cart.push({
+          id: Date.now(),
+          name,
+          weight,
+          price: priceNum,
+          image,
+          quantity: qty,
+        });
+      }
+
+      await saveCart(cart);
+      Alert.alert('Thành công', 'Đã thêm sản phẩm vào giỏ 🛒');
+    } catch (error) {
+      console.log('ADD BASKET ERROR:', error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -120,12 +152,7 @@ export default function ProductDetail({ navigation, route }) {
           </View>
 
           {/* BUTTON */}
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => {
-              Alert.alert("Thành công", "Đã thêm sản phẩm vào giỏ 🛒");
-            }}
-          >
+          <TouchableOpacity style={styles.btn} onPress={handleAddToBasket}>
             <Text style={styles.btnText}>Add To Basket</Text>
           </TouchableOpacity>
 

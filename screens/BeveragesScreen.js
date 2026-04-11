@@ -1,9 +1,10 @@
 import React from 'react';
-import { 
-  View, Text, StyleSheet, Image, ScrollView, 
-  TouchableOpacity, Dimensions, SafeAreaView, StatusBar
+import {
+  View, Text, StyleSheet, Image, ScrollView,
+  TouchableOpacity, Dimensions, SafeAreaView, StatusBar, Alert
 } from 'react-native';
 import { ChevronLeft, SlidersHorizontal, Plus } from 'lucide-react-native';
+import { getCart, saveCart } from '../services/storageService';
 
 const { width } = Dimensions.get('window');
 
@@ -17,6 +18,26 @@ const beveragesData = [
 ];
 
 const BeveragesScreen = ({ navigation }) => {
+
+  const addToCart = async (product) => {
+    try {
+      let cart = await getCart();
+      if (!cart) cart = [];
+
+      const existing = cart.find(item => item.name === product.name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...product, id: Date.now(), quantity: 1 });
+      }
+
+      await saveCart(cart);
+      Alert.alert('✅', 'Đã thêm vào giỏ');
+    } catch (error) {
+      console.log('ADD CART ERROR:', error);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" translucent={false} />
@@ -35,24 +56,47 @@ const BeveragesScreen = ({ navigation }) => {
       {/* Grid Content */}
       <ScrollView contentContainerStyle={styles.grid} showsVerticalScrollIndicator={false}>
         {beveragesData.map((item) => (
-          <View key={item.id} style={styles.card}>
+          <TouchableOpacity
+            key={item.id}
+            style={styles.card}
+            activeOpacity={0.85}
+            onPress={() =>
+              navigation.navigate('ProductDetail', {
+                name: item.name,
+                weight: item.weight,
+                price: item.price,
+                image: item.image,
+              })
+            }
+          >
             <View style={styles.imgWrap}>
-              {/* ✅ CẬP NHẬT: Kích thước ảnh chuẩn 93.2 x 93.2 cho tất cả đồ uống */}
               <Image source={item.image} style={styles.productImg} resizeMode="contain" />
             </View>
-            
+
             <View>
               <Text style={styles.productName}>{item.name}</Text>
               <Text style={styles.productWeight}>{item.weight}, Price</Text>
             </View>
-            
+
             <View style={styles.cardFooter}>
               <Text style={styles.productPrice}>{item.price}</Text>
-              <TouchableOpacity style={styles.plusBtn} activeOpacity={0.7}>
+              <TouchableOpacity
+                style={styles.plusBtn}
+                activeOpacity={0.7}
+                onPress={(e) => {
+                  e.stopPropagation?.();
+                  addToCart({
+                    name: item.name,
+                    weight: item.weight,
+                    price: parseFloat(item.price.replace('$', '')),
+                    image: item.image,
+                  });
+                }}
+              >
                 <Plus color="#FFF" size={24} strokeWidth={3} />
               </TouchableOpacity>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </SafeAreaView>

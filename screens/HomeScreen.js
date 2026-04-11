@@ -51,11 +51,17 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const ProductCard = ({ image, name, weight, price }) => (
-    <View style={styles.cardProduct}>
+    <TouchableOpacity
+      style={styles.cardProduct}
+      activeOpacity={0.85}
+      onPress={() =>
+        navigation.navigate('ProductDetail', { name, weight, price, image })
+      }
+    >
       <View style={styles.imgWrapper}>
         <Image source={image} style={styles.imgProduct} resizeMode="contain" />
       </View>
-      
+
       <View style={styles.infoWrapper}>
         <Text style={styles.txtName} numberOfLines={1}>{name}</Text>
         <Text style={styles.txtWeight}>{weight}</Text>
@@ -64,24 +70,22 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.priceRow}>
         <Text style={styles.txtPrice}>{price}</Text>
 
-        {/* 🔥 FIX CHỖ NÀY */}
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.btnPlus}
-          onPress={async () => {
-            await addToCart({
+          onPress={(e) => {
+            e.stopPropagation?.();
+            addToCart({
               name,
               weight,
-              price: parseFloat(price.replace('$','')),
-              image
+              price: parseFloat(price.replace('$', '')),
+              image,
             });
-
-            navigation.navigate('ProductDetail', { name, price, image });
           }}
         >
           <Plus color="#FFF" size={22} strokeWidth={3} />
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   const MenuItem = ({ name, IconComponent, destination }) => {
@@ -117,6 +121,12 @@ const HomeScreen = ({ navigation }) => {
               <MapPin color="#4C4F4D" size={20} />
               <Text style={styles.locationText}>Dhaka, Banassre</Text>
             </View>
+          </View>
+
+          {/* STUDENT INFO */}
+          <View style={styles.studentBox}>
+            <Text style={styles.studentName}>Nguyễn Thị Khánh Linh</Text>
+            <Text style={styles.studentMssv}>MSSV: 23810310394</Text>
           </View>
 
           {/* SEARCH */}
@@ -180,6 +190,20 @@ const styles = StyleSheet.create({
 
   locationWrapper: { flexDirection: 'row', alignItems: 'center', marginTop: 10 },
   locationText: { fontSize: 18, fontWeight: '600', color: '#4C4F4D', marginLeft: 5 },
+
+  studentBox: {
+    marginHorizontal: 25,
+    marginTop: 10,
+    marginBottom: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    backgroundColor: '#EEF8F2',
+    borderRadius: 12,
+    borderLeftWidth: 4,
+    borderLeftColor: '#53B175',
+  },
+  studentName: { fontSize: 15, fontWeight: '700', color: '#181725' },
+  studentMssv: { fontSize: 13, color: '#53B175', marginTop: 2, fontWeight: '600' },
 
   searchBox: { 
     backgroundColor: '#F2F3F2',

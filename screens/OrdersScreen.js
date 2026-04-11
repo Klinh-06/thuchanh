@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ChevronLeft } from 'lucide-react-native';
 import { getOrders } from '../services/storageService';
 
 const OrdersScreen = ({ navigation }) => {
@@ -57,7 +58,21 @@ const OrdersScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>My Orders</Text>
+      <View style={styles.headerBar}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backBtn}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
+          <ChevronLeft color="#181725" size={28} />
+        </TouchableOpacity>
+        <Text style={styles.header}>My Orders</Text>
+        <View style={styles.backBtn} />
+      </View>
+
+      <Text style={styles.countText}>
+        Tổng số đơn: <Text style={styles.countNumber}>{orders.length}</Text>
+      </Text>
 
       <FlatList
         data={orders}
@@ -79,12 +94,40 @@ const styles = {
     backgroundColor: '#fff',
   },
 
+  headerBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
+    paddingTop: 10,
+    paddingBottom: 5,
+  },
+
+  backBtn: {
+    width: 32,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   header: {
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginVertical: 20,
     color: '#181725',
+  },
+
+  countText: {
+    fontSize: 14,
+    color: '#7C7C7C',
+    textAlign: 'center',
+    marginBottom: 15,
+  },
+
+  countNumber: {
+    color: '#53B175',
+    fontWeight: '700',
+    fontSize: 16,
   },
 
   card: {
