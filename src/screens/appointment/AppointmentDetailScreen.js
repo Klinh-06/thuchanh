@@ -120,7 +120,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
           {appointment.queueNumber ? <Row icon="list-outline" label="Số thứ tự" value={appointment.queueNumber} valueColor={Colors.primary} /> : null}
           {appointment.note ? <Row icon="document-text-outline" label="Ghi chú" value={appointment.note} /> : null}
         </View>
-
+      // Medical record section
         {/* Medical Record Link */}
         {appointment.status === 'completed' && (
           <View style={styles.card}>
