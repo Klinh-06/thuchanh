@@ -98,7 +98,7 @@ export default function MedicalRecordsScreen({ navigation }) {
   </SafeAreaView>
   );
 }
-
+// Medical records screen styles
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: Colors.primary },
   inner: { flex: 1, backgroundColor: Colors.background },
