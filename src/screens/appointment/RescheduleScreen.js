@@ -172,7 +172,7 @@ export default function RescheduleScreen({ navigation, route }) {
           )}
         </View>
       </ScrollView>
-
+      {/* Bottom action bar */}
       <View style={styles.bottomBar}>
         <View style={styles.newInfo}>
           <Text style={styles.newLabel}>Lịch mới:</Text>
