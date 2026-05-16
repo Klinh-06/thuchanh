@@ -69,7 +69,7 @@ export default function MedicalRecordsScreen({ navigation }) {
         <TouchableOpacity style={styles.pinBanner} onPress={() => navigation.navigate('SetPasscode')}>
           <Ionicons name="shield-checkmark-outline" size={20} color="#7B1FA2" />
           <View style={{ flex: 1, marginLeft: 10 }}>
-            <Text style={styles.pinBannerTitle}>Bảo vệ hồ sơ của bạn</Text>
+            <Text style={styles.pinBannerTitle}>Bảo vệ hồ sơ của bạn </Text>
             <Text style={styles.pinBannerSub}>Đặt mã PIN để tránh người khác xem hồ sơ bệnh án</Text>
           </View>
           <Ionicons name="chevron-forward" size={16} color="#7B1FA2" />
