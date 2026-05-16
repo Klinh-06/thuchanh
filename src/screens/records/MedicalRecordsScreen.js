@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
 import { formatDateLong } from '../../utils/dateUtils';
-
+// Medical records listing screen
 export default function MedicalRecordsScreen({ navigation }) {
   const { records, passcodeEnabled, recordsUnlocked } = useApp();
 
