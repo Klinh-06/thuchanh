@@ -10,7 +10,7 @@ import { formatDateLong } from '../../utils/dateUtils';
 // Medical records listing screen
 export default function MedicalRecordsScreen({ navigation }) {
   const { records, passcodeEnabled, recordsUnlocked } = useApp();
-
+// Lock records when PIN protection is enabled
   if (passcodeEnabled && !recordsUnlocked) {
     return (
       <SafeAreaView edges={['top']} style={styles.safe}>
