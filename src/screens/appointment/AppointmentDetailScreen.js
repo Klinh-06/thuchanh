@@ -84,7 +84,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
           <Ionicons name="arrow-back" size={24} color={Colors.white} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Chi tiết lịch hẹn</Text>
+        <Text style={styles.headerTitle}>Chi tiết lịch hẹn khám</Text>
         <View style={{ width: 40 }} />
       </View>
 
