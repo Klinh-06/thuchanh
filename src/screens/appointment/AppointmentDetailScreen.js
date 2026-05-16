@@ -146,7 +146,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
             )}
           </View>
         )}
-
+        // Examination process steps
         {/* Quy trình khám — chỉ hiện khi sắp tới */}
         {appointment.status === 'upcoming' && (
           <View style={styles.card}>
