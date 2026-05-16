@@ -195,6 +195,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
                 onPress={() => navigation.navigate('Reschedule', { appointment })}
               >
                 <Ionicons name="calendar-outline" size={18} color={Colors.primary} />
+                // Navigate to reschedule screen
                 <Text style={styles.actionText}>Đổi lịch hẹn</Text>
                 <Ionicons name="chevron-forward" size={16} color={Colors.textSecondary} style={{ marginLeft: 'auto' }} />
               </TouchableOpacity>
