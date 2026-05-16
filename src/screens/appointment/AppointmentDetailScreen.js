@@ -217,6 +217,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
               onPress={() => navigation.navigate('RateDoctor', { appointment })}
             >
               <Ionicons name="star-outline" size={18} color="#FFB300" />
+              // Rating action for completed appointments
               <Text style={[styles.actionText, { color: '#FFB300' }]}>Đánh giá bác sĩ</Text>
               <Ionicons name="chevron-forward" size={16} color={Colors.textSecondary} style={{ marginLeft: 'auto' }} />
             </TouchableOpacity>
