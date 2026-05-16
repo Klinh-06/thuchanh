@@ -47,7 +47,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
       ]
     );
   };
-
+// Handle appointment completion
   const handleComplete = () => {
     Alert.alert(
       'Hoàn thành khám',
