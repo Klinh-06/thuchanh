@@ -96,7 +96,7 @@ export default function MyAppointmentsScreen({ navigation }) {
             >
               <Ionicons name={item.rating ? 'star' : 'star-outline'} size={14} color="#FFB300" />
               <Text style={[styles.actionBtnText, { color: '#FFB300' }]}>
-                {item.rating ? `Đã đánh giá ${item.rating}★` : 'Đánh giá'}
+                {item.rating ? `Đã đánh giá ${item.rating}★` : 'Đánh giá'} //// Display doctor rating status
               </Text>
             </TouchableOpacity>
           </View>
