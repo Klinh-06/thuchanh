@@ -11,11 +11,21 @@ export default function BookingSuccessScreen({ navigation, route }) {
   const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    Animated.sequence([
-      Animated.spring(scale, { toValue: 1, tension: 50, friction: 7, useNativeDriver: true }),
-      Animated.timing(opacity, { toValue: 1, duration: 400, useNativeDriver: true }),
-    ]).start();
-  }, []);
+  Animated.sequence([
+    Animated.spring(scale, {
+      toValue: 1,
+      tension: 50,
+      friction: 7,
+      useNativeDriver: true,
+    }),
+
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }),
+  ]).start();
+}, []);
 
   return (
     <SafeAreaView edges={['top']} style={styles.safe}>
@@ -107,10 +117,22 @@ const styles = StyleSheet.create({
   detailLabel: { flex: 1, fontSize: 14, color: Colors.textSecondary, marginLeft: 10 },
   detailValue: { fontSize: 14, color: Colors.text, fontWeight: '600' },
   noteBox: {
-    flexDirection: 'row', alignItems: 'flex-start', backgroundColor: '#FFF8E1',
-    borderRadius: 12, padding: 12, width: '100%', marginBottom: 24, gap: 8,
-  },
-  noteText: { flex: 1, fontSize: 13, color: '#F57C00', lineHeight: 18 },
+  flexDirection: 'row',
+  alignItems: 'flex-start',
+  backgroundColor: '#FFF8E1',
+  borderRadius: 14,
+  padding: 14,
+  width: '100%',
+  marginBottom: 20,
+  gap: 10,
+},
+
+noteText: {
+  flex: 1,
+  fontSize: 14,
+  color: '#F57C00',
+  lineHeight: 20,
+},
   viewBtn: {
     width: '100%', backgroundColor: Colors.primary, borderRadius: 14, paddingVertical: 16,
     alignItems: 'center', marginBottom: 10,
