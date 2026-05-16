@@ -46,24 +46,34 @@ export default function SearchDoctorScreen({ navigation }) {
 
       {/* Specialty Filter */}
       <View>
-        <FlatList
-          data={[{ id: null, name: 'Tất cả' }, ...specialties]}
-          keyExtractor={item => String(item.id)}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.filterList}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={[styles.filterChip, selectedSpec === item.id && styles.filterChipActive]}
-              onPress={() => setSelectedSpec(item.id)}
-            >
-              <Text style={[styles.filterText, selectedSpec === item.id && styles.filterTextActive]}>
-                {item.name}
-              </Text>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
+  <FlatList
+    data={[{ id: null, name: 'Tất cả chuyên khoa' }, ...specialties]}
+    keyExtractor={(item) => String(item.id)}
+    horizontal
+    showsHorizontalScrollIndicator={false}
+    contentContainerStyle={styles.filterList}
+    renderItem={({ item }) => (
+      <TouchableOpacity
+        style={[
+          styles.filterChip,
+          selectedSpec === item.id && styles.filterChipActive,
+        ]}
+        onPress={() => {
+          setSelectedSpec(item.id);
+        }}
+      >
+        <Text
+          style={[
+            styles.filterText,
+            selectedSpec === item.id && styles.filterTextActive,
+          ]}
+        >
+          {item.name}
+        </Text>
+      </TouchableOpacity>
+    )}
+  />
+</View>
 
       <Text style={styles.resultCount}>{filtered.length} kết quả</Text>
 
@@ -94,18 +104,36 @@ export default function SearchDoctorScreen({ navigation }) {
                 style={styles.bookBtn}
                 onPress={() => navigation.navigate('BookAppointment', { doctor: item })}
               >
-                <Text style={styles.bookText}>Đặt lịch</Text>
+                
               </TouchableOpacity>
             </View>
           </TouchableOpacity>
         )}
         ListEmptyComponent={
-          <View style={styles.empty}>
-            <Ionicons name="search-outline" size={60} color={Colors.textLight} />
-            <Text style={styles.emptyTitle}>Không tìm thấy</Text>
-            <Text style={styles.emptyText}>Thử từ khóa hoặc chuyên khoa khác</Text>
-          </View>
-        }
+  <View style={styles.empty}>
+    <Ionicons
+      name="search-outline"
+      size={60}
+      color={Colors.textLight}
+    />
+
+    <Text style={styles.emptyTitle}>
+      Không tìm thấy bác sĩ
+    </Text>
+
+    <Text style={styles.emptyText}>
+      Thử từ khóa hoặc chuyên khoa khác
+    </Text>
+
+    <Text style={styles.emptyText}>
+      Vui lòng kiểm tra lại thông tin tìm kiếm
+    </Text>
+
+    <Text style={styles.emptyText}>
+      Hoặc chọn bộ lọc khác để tiếp tục
+    </Text>
+  </View>
+}
       />
         </View>
   </SafeAreaView>
@@ -141,11 +169,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.07, shadowRadius: 5, elevation: 3,
   },
-  avatar: { width: 52, height: 52, borderRadius: 26, justifyContent: 'center', alignItems: 'center', marginRight: 12 },
-  initials: { color: Colors.white, fontSize: 18, fontWeight: '700' },
-  info: { flex: 1 },
-  name: { fontSize: 14, fontWeight: '700', color: Colors.text },
-  spec: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
+  
   metaRow: { flexDirection: 'row', alignItems: 'center', marginTop: 3 },
   meta: { fontSize: 12, color: Colors.textSecondary },
   fee: { fontSize: 12, color: Colors.primary, fontWeight: '600', textAlign: 'right', marginBottom: 6 },

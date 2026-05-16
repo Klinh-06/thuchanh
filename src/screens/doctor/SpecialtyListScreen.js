@@ -6,10 +6,17 @@ import { specialties, doctors } from '../../data/mockData';
 
 export default function SpecialtyListScreen({ navigation }) {
   const iconMap = {
-    'Tim mạch': 'heart', 'Nhi khoa': 'people', 'Nội tổng quát': 'medkit',
-    'Da liễu': 'person', 'Thần kinh': 'flash', 'Xương khớp': 'body',
-    'Mắt': 'eye', 'Tai Mũi Họng': 'ear',
-  };
+  'Tim mạch': 'heart',
+  'Nhi khoa': 'people',
+  'Nội tổng quát': 'medkit',
+  'Da liễu': 'person',
+  'Thần kinh': 'flash',
+  'Xương khớp': 'body',
+  'Mắt': 'eye',
+  'Tai Mũi Họng': 'ear',
+  'Răng Hàm Mặt': 'happy',
+  'Sản phụ khoa': 'female',
+};
 
   return (
     <SafeAreaView edges={['top']} style={styles.safe}>
@@ -63,14 +70,7 @@ const styles = StyleSheet.create({
   backBtn: { width: 40, height: 40, justifyContent: 'center', alignItems: 'center' },
   headerTitle: { color: Colors.white, fontSize: 18, fontWeight: '700' },
   grid: { padding: 16, gap: 12 },
-  card: {
-    flex: 1, backgroundColor: Colors.white, borderRadius: 16, padding: 18,
-    alignItems: 'center', shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 6, elevation: 3,
-  },
-  iconBox: { width: 64, height: 64, borderRadius: 20, justifyContent: 'center', alignItems: 'center', marginBottom: 12 },
-  name: { fontSize: 15, fontWeight: '700', color: Colors.text, textAlign: 'center', marginBottom: 4 },
-  count: { fontSize: 12, color: Colors.textSecondary, marginBottom: 12 },
+  
   badge: { borderRadius: 8, paddingHorizontal: 12, paddingVertical: 4 },
   badgeText: { fontSize: 12, fontWeight: '700' },
 });
