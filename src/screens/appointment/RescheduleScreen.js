@@ -18,6 +18,7 @@ export default function RescheduleScreen({ navigation, route }) {
 
   const doctor = doctors.find(d => d.id === appointment.doctorId);
   const dates = getNext14Days();
+
 // Get available slots from doctor's schedule
   const getDoctorSlots = (date) => {
     if (!doctor || !date) return [];
@@ -194,43 +195,238 @@ export default function RescheduleScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: Colors.primary },
-  inner: { flex: 1, backgroundColor: Colors.background },
-  header: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    backgroundColor: Colors.primary, paddingHorizontal: 16, paddingVertical: 16,
+  safe: {
+    flex: 1,
+    backgroundColor: Colors.primary
   },
-  backBtn: { width: 40, height: 40, justifyContent: 'center', alignItems: 'center' },
-  headerTitle: { color: Colors.white, fontSize: 18, fontWeight: '700' },
-  currentCard: { backgroundColor: Colors.warning + '20', margin: 16, borderRadius: 14, padding: 14, borderLeftWidth: 4, borderLeftColor: Colors.warning },
-  currentLabel: { fontSize: 12, color: Colors.warning, fontWeight: '700', marginBottom: 6 },
-  currentInfo: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  currentText: { fontSize: 14, color: Colors.text, fontWeight: '500' },
-  section: { backgroundColor: Colors.white, margin: 16, marginBottom: 0, borderRadius: 16, padding: 16, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 6, elevation: 3 },
-  sectionTitle: { fontSize: 15, fontWeight: '700', color: Colors.text, marginBottom: 14 },
-  dateList: { paddingBottom: 8, gap: 8 },
-  dateItem: { width: 52, alignItems: 'center', paddingVertical: 10, borderRadius: 12, borderWidth: 1.5, borderColor: Colors.border, backgroundColor: Colors.background },
-  dateItemSelected: { backgroundColor: Colors.primary, borderColor: Colors.primary },
-  dateDay: { fontSize: 11, color: Colors.textSecondary, fontWeight: '600' },
-  dateDaySelected: { color: Colors.white },
-  dateNum: { fontSize: 17, fontWeight: '700', color: Colors.text, marginTop: 2 },
-  dateNumSelected: { color: Colors.white },
-  selectedInfo: { fontSize: 13, color: Colors.primary, fontWeight: '600', marginTop: 10 },
-  hint: { fontSize: 13, color: Colors.textSecondary, fontStyle: 'italic' },
-  timeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
-  timeChip: { paddingHorizontal: 14, paddingVertical: 10, borderRadius: 10, borderWidth: 1.5, borderColor: Colors.border, backgroundColor: Colors.background, alignItems: 'center', minWidth: 76 },
-  timeChipSelected: { backgroundColor: Colors.primary, borderColor: Colors.primary },
-  timeChipFull: { backgroundColor: Colors.border + '60', borderColor: Colors.border, opacity: 0.7 },
-  timeChipConflict: { backgroundColor: '#FFF3E0', borderColor: '#FB8C00' },
-  timeText: { fontSize: 14, color: Colors.text, fontWeight: '600' },
-  timeTextSelected: { color: Colors.white },
-  timeTextBlocked: { color: Colors.textSecondary },
-  timeBadge: { fontSize: 10, color: Colors.textSecondary, fontWeight: '700', marginTop: 2 },
-  timeBadgeConflict: { color: '#FB8C00' },
-  bottomBar: { position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: Colors.white, padding: 16, flexDirection: 'row', alignItems: 'center', borderTopWidth: 1, borderTopColor: Colors.border, gap: 12 },
-  newInfo: { flex: 1 },
-  newLabel: { fontSize: 11, color: Colors.textSecondary },
-  newValue: { fontSize: 13, fontWeight: '600', color: Colors.text, marginTop: 2 },
-  confirmBtn: { backgroundColor: Colors.primary, borderRadius: 14, paddingHorizontal: 20, paddingVertical: 14 },
-  confirmText: { color: Colors.white, fontSize: 15, fontWeight: '700' },
+
+  inner: {
+    flex: 1,
+    backgroundColor: Colors.background
+  },
+
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 16,
+    paddingVertical: 16
+  },
+
+  backBtn: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  headerTitle: {
+    color: Colors.white,
+    fontSize: 18,
+    fontWeight: '700'
+  },
+
+  currentCard: {
+    backgroundColor: Colors.warning + '20',
+    margin: 16,
+    borderRadius: 14,
+    padding: 14,
+    borderLeftWidth: 4,
+    borderLeftColor: Colors.warning
+  },
+
+  currentLabel: {
+    fontSize: 12,
+    color: Colors.warning,
+    fontWeight: '700',
+    marginBottom: 6
+  },
+
+  currentInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8
+  },
+
+  currentText: {
+    fontSize: 14,
+    color: Colors.text,
+    fontWeight: '500'
+  },
+
+  section: {
+    backgroundColor: Colors.white,
+    margin: 16,
+    marginBottom: 0,
+    borderRadius: 16,
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3
+  },
+
+  sectionTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: Colors.text,
+    marginBottom: 14
+  },
+
+  dateList: {
+    paddingBottom: 8,
+    gap: 8
+  },
+
+  dateItem: {
+    width: 52,
+    alignItems: 'center',
+    paddingVertical: 10,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: Colors.border,
+    backgroundColor: Colors.background
+  },
+
+  dateItemSelected: {
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary
+  },
+
+  dateDay: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontWeight: '600'
+  },
+
+  dateDaySelected: {
+    color: Colors.white
+  },
+
+  dateNum: {
+    fontSize: 17,
+    fontWeight: '700',
+    color: Colors.text,
+    marginTop: 2
+  },
+
+  dateNumSelected: {
+    color: Colors.white
+  },
+
+  selectedInfo: {
+    fontSize: 13,
+    color: Colors.primary,
+    fontWeight: '600',
+    marginTop: 10
+  },
+
+  hint: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontStyle: 'italic'
+  },
+
+  timeGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10
+  },
+
+  timeChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    borderRadius: 10,
+    borderWidth: 1.5,
+    borderColor: Colors.border,
+    backgroundColor: Colors.background,
+    alignItems: 'center',
+    minWidth: 76
+  },
+
+  timeChipSelected: {
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary
+  },
+
+  timeChipFull: {
+    backgroundColor: Colors.border + '60',
+    borderColor: Colors.border,
+    opacity: 0.7
+  },
+
+  timeChipConflict: {
+    backgroundColor: '#FFF3E0',
+    borderColor: '#FB8C00'
+  },
+
+  timeText: {
+    fontSize: 14,
+    color: Colors.text,
+    fontWeight: '600'
+  },
+
+  timeTextSelected: {
+    color: Colors.white
+  },
+
+  timeTextBlocked: {
+    color: Colors.textSecondary
+  },
+
+  timeBadge: {
+    fontSize: 10,
+    color: Colors.textSecondary,
+    fontWeight: '700',
+    marginTop: 2
+  },
+
+  timeBadgeConflict: {
+    color: '#FB8C00'
+  },
+
+  bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: Colors.white,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: Colors.border,
+    gap: 12
+  },
+
+  newInfo: {
+    flex: 1
+  },
+
+  newLabel: {
+    fontSize: 11,
+    color: Colors.textSecondary
+  },
+
+  newValue: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: Colors.text,
+    marginTop: 2
+  },
+
+  confirmBtn: {
+    backgroundColor: Colors.primary,
+    borderRadius: 14,
+    paddingHorizontal: 20,
+    paddingVertical: 14
+  },
+
+  confirmText: {
+    color: Colors.white,
+    fontSize: 15,
+    fontWeight: '700'
+  }
 });

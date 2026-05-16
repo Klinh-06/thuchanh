@@ -85,42 +85,169 @@ export default function BookingSuccessScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: Colors.background },
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
-  successCircle: { marginBottom: 16 },
-  content: { width: '100%', alignItems: 'center' },
-  title: { fontSize: 26, fontWeight: '700', color: Colors.text, marginBottom: 6 },
-  subtitle: { fontSize: 15, color: Colors.textSecondary, marginBottom: 24 },
-  infoCard: {
-    width: '100%', backgroundColor: Colors.white, borderRadius: 18, padding: 18,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8, elevation: 4,
+  safe: {
+  flex: 1,
+  backgroundColor: Colors.background,
+  },
+
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+
+  successCircle: {
     marginBottom: 16,
   },
-  infoRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 14 },
-  avatar: { width: 50, height: 50, borderRadius: 25, justifyContent: 'center', alignItems: 'center', marginRight: 12 },
-  initials: { color: Colors.white, fontSize: 18, fontWeight: '700' },
+
+  content: {
+    width: '100%',
+    alignItems: 'center',
+  },
+
+  title: {
+    fontSize: 26,
+    fontWeight: '700',
+    color: Colors.text,
+    marginBottom: 6,
+  },
+
+  subtitle: {
+    fontSize: 15,
+    color: Colors.textSecondary,
+    marginBottom: 24,
+  },
+
+  infoCard: {
+    width: '100%',
+    backgroundColor: Colors.white,
+    borderRadius: 18,
+    padding: 18,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+    marginBottom: 16,
+  },
+
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 14,
+  },
+
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+
+  initials: {
+    color: Colors.white,
+    fontSize: 18,
+    fontWeight: '700',
+  },
+
   doctorInfo: {},
-  doctorName: { fontSize: 16, fontWeight: '700', color: Colors.text },
-  doctorSpec: { fontSize: 13, color: Colors.textSecondary, marginTop: 2 },
-  divider: { height: 1, backgroundColor: Colors.border, marginBottom: 14 },
-  detailRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 10 },
-  detailLabel: { flex: 1, fontSize: 14, color: Colors.textSecondary, marginLeft: 10 },
-  detailValue: { fontSize: 14, color: Colors.text, fontWeight: '600' },
+
+  doctorName: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: Colors.text,
+  },
+
+  doctorSpec: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    marginTop: 2,
+  },
+
+  divider: {
+    height: 1,
+    backgroundColor: Colors.border,
+    marginBottom: 14,
+  },
+
+  detailRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+
+  detailLabel: {
+    flex: 1,
+    fontSize: 14,
+    color: Colors.textSecondary,
+    marginLeft: 10,
+  },
+
+  detailValue: {
+    fontSize: 14,
+    color: Colors.text,
+    fontWeight: '600',
+  },
+
   noteBox: {
-    flexDirection: 'row', alignItems: 'flex-start', backgroundColor: '#FFF8E1',
-    borderRadius: 12, padding: 12, width: '100%', marginBottom: 24, gap: 8,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    backgroundColor: '#FFF8E1',
+    borderRadius: 12,
+    padding: 12,
+    width: '100%',
+    marginBottom: 24,
+    gap: 8,
   },
-  noteText: { flex: 1, fontSize: 13, color: '#F57C00', lineHeight: 18 },
+
+  noteText: {
+    flex: 1,
+    fontSize: 13,
+    color: '#F57C00',
+    lineHeight: 18,
+  },
+
   viewBtn: {
-    width: '100%', backgroundColor: Colors.primary, borderRadius: 14, paddingVertical: 16,
-    alignItems: 'center', marginBottom: 10,
-    shadowColor: Colors.primary, shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.4, shadowRadius: 8, elevation: 5,
+    width: '100%',
+    backgroundColor: Colors.primary,
+    borderRadius: 14,
+    paddingVertical: 16,
+    alignItems: 'center',
+    marginBottom: 10,
+    shadowColor: Colors.primary,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+    elevation: 5,
   },
-  viewBtnText: { color: Colors.white, fontSize: 16, fontWeight: '700' },
+
+  viewBtnText: {
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: '700',
+  },
+
   homeBtn: {
-    width: '100%', borderRadius: 14, paddingVertical: 14, alignItems: 'center',
-    borderWidth: 1.5, borderColor: Colors.border,
+    width: '100%',
+    borderRadius: 14,
+    paddingVertical: 14,
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: Colors.border,
   },
-  homeBtnText: { color: Colors.textSecondary, fontSize: 16, fontWeight: '600' },
+
+  homeBtnText: {
+    color: Colors.textSecondary,
+    fontSize: 16,
+    fontWeight: '600',
+  },
 });

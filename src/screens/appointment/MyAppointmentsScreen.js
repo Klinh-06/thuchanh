@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import {
   View, Text, FlatList, TouchableOpacity, StyleSheet,
 } from 'react-native';
@@ -7,8 +8,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
 import { formatDate, getStatusLabel } from '../../utils/dateUtils';
+
 // Appointment status tabs
 const TABS = ['Sắp tới', 'Đã khám', 'Đã hủy'];
+
 //MyAppointmentsScreen: hiển thi lịch hẹn của người dùng, phân loại theo trạng thái (sắp tới, đã khám, đã hủy) với badge số lượng. 
 export default function MyAppointmentsScreen({ navigation }) {
   const [activeTab, setActiveTab] = useState(0);
@@ -24,6 +27,7 @@ export default function MyAppointmentsScreen({ navigation }) {
     completed: { color: Colors.completed, bg: Colors.completedBg, icon: 'checkmark-circle-outline' },
     cancelled: { color: Colors.cancelled, bg: Colors.cancelledBg, icon: 'close-circle-outline' },
   };
+
 // Appointment card component with dynamic status badge and actions based on appointment status
   const AppointmentCard = ({ item }) => {
     const cfg = statusConfig[item.status] || statusConfig.upcoming;
@@ -162,44 +166,225 @@ export default function MyAppointmentsScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: Colors.primary },
-  inner: { flex: 1, backgroundColor: Colors.background },
-  header: { backgroundColor: Colors.primary, paddingHorizontal: 20, paddingVertical: 16 },
-  headerTitle: { color: Colors.white, fontSize: 20, fontWeight: '700' },
-  tabs: { flexDirection: 'row', backgroundColor: Colors.white, borderBottomWidth: 1, borderBottomColor: Colors.border },
-  tab: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 14, gap: 6 },
-  tabActive: { borderBottomWidth: 2.5, borderBottomColor: Colors.primary },
-  tabText: { fontSize: 13, color: Colors.textSecondary, fontWeight: '600' },
-  tabTextActive: { color: Colors.primary },
-  tabBadge: { backgroundColor: Colors.border, borderRadius: 10, paddingHorizontal: 6, paddingVertical: 1 },
-  tabBadgeActive: { backgroundColor: Colors.primaryLight },
-  tabBadgeText: { fontSize: 11, color: Colors.textSecondary, fontWeight: '700' },
-  tabBadgeTextActive: { color: Colors.primary },
-  list: { padding: 16, gap: 12 },
-  card: {
-    backgroundColor: Colors.white, borderRadius: 16,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 6, elevation: 3,
-    overflow: 'hidden',
+  safe: {
+    flex: 1,
+    backgroundColor: Colors.primary
   },
-  cardTop: { flexDirection: 'row', alignItems: 'center', padding: 16 },
-  avatar: { width: 48, height: 48, borderRadius: 24, justifyContent: 'center', alignItems: 'center', marginRight: 12 },
-  initials: { color: Colors.white, fontSize: 16, fontWeight: '700' },
-  cardInfo: { flex: 1 },
-  doctorName: { fontSize: 15, fontWeight: '700', color: Colors.text },
-  specialty: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
-  statusBadge: { flexDirection: 'row', alignItems: 'center', borderRadius: 8, paddingHorizontal: 8, paddingVertical: 4, gap: 3 },
-  statusText: { fontSize: 11, fontWeight: '700' },
-  cardDivider: { height: 1, backgroundColor: Colors.background, marginHorizontal: 16 },
-  cardBottom: { flexDirection: 'row', padding: 12, paddingHorizontal: 16, gap: 16 },
-  meta: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  metaText: { fontSize: 12, color: Colors.textSecondary },
-  actions: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: Colors.background },
-  actionBtn: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 12, gap: 5 },
-  actionDivider: { width: 1, backgroundColor: Colors.background },
-  actionBtnText: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
-  empty: { alignItems: 'center', marginTop: 60, gap: 10 },
-  emptyTitle: { fontSize: 18, fontWeight: '700', color: Colors.text },
-  emptyText: { fontSize: 14, color: Colors.textSecondary },
-  bookNowBtn: { backgroundColor: Colors.primary, borderRadius: 14, paddingHorizontal: 24, paddingVertical: 12, marginTop: 8 },
-  bookNowText: { color: Colors.white, fontSize: 15, fontWeight: '700' },
+
+  inner: {
+    flex: 1,
+    backgroundColor: Colors.background
+  },
+
+  header: {
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 20,
+    paddingVertical: 16
+  },
+
+  headerTitle: {
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: '700'
+  },
+
+  tabs: {
+    flexDirection: 'row',
+    backgroundColor: Colors.white,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border
+  },
+
+  tab: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    gap: 6
+  },
+
+  tabActive: {
+    borderBottomWidth: 2.5,
+    borderBottomColor: Colors.primary
+  },
+
+  tabText: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontWeight: '600'
+  },
+
+  tabTextActive: {
+    color: Colors.primary
+  },
+
+  tabBadge: {
+    backgroundColor: Colors.border,
+    borderRadius: 10,
+    paddingHorizontal: 6,
+    paddingVertical: 1
+  },
+
+  tabBadgeActive: {
+    backgroundColor: Colors.primaryLight
+  },
+
+  tabBadgeText: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontWeight: '700'
+  },
+
+  tabBadgeTextActive: {
+    color: Colors.primary
+  },
+
+  list: {
+    padding: 16,
+    gap: 12
+  },
+
+  card: {
+    backgroundColor: Colors.white,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3,
+    overflow: 'hidden'
+  },
+
+  cardTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16
+  },
+
+  avatar: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12
+  },
+
+  initials: {
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: '700'
+  },
+
+  cardInfo: {
+    flex: 1
+  },
+
+  doctorName: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: Colors.text
+  },
+
+  specialty: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    marginTop: 2
+  },
+
+  statusBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    gap: 3
+  },
+
+  statusText: {
+    fontSize: 11,
+    fontWeight: '700'
+  },
+
+  cardDivider: {
+    height: 1,
+    backgroundColor: Colors.background,
+    marginHorizontal: 16
+  },
+
+  cardBottom: {
+    flexDirection: 'row',
+    padding: 12,
+    paddingHorizontal: 16,
+    gap: 16
+  },
+
+  meta: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4
+  },
+
+  metaText: {
+    fontSize: 12,
+    color: Colors.textSecondary
+  },
+
+  actions: {
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: Colors.background
+  },
+
+  actionBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    gap: 5
+  },
+
+  actionDivider: {
+    width: 1,
+    backgroundColor: Colors.background
+  },
+
+  actionBtnText: {
+    fontSize: 13,
+    color: Colors.primary,
+    fontWeight: '600'
+  },
+
+  empty: {
+    alignItems: 'center',
+    marginTop: 60,
+    gap: 10
+  },
+
+  emptyTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: Colors.text
+  },
+
+  emptyText: {
+    fontSize: 14,
+    color: Colors.textSecondary
+  },
+
+  bookNowBtn: {
+    backgroundColor: Colors.primary,
+    borderRadius: 14,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    marginTop: 8
+  },
+
+  bookNowText: {
+    color: Colors.white,
+    fontSize: 15,
+    fontWeight: '700'
+  } 
 });

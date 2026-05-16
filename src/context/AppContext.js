@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+
 import {
   getUser, saveUser, getAppointments, saveAppointments,
   getRecords, saveRecords, getNotifications, saveNotifications,
@@ -26,7 +27,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     loadData();
   }, []);
-
+//loadData: hàm khởi tạo dữ liệu khi app bắt đầu
   const loadData = async () => {
     try {
       const auth = await getAuthState();
@@ -117,6 +118,7 @@ export const AppProvider = ({ children }) => {
     setAppointments(cleanedAppts);
     setRecords(recs);
     setNotifications(notifs);
+
     const savedCode = await getPasscode(userId);
     setPasscodeEnabled(!!savedCode);
 
@@ -146,6 +148,7 @@ export const AppProvider = ({ children }) => {
       avatarColor: ['#2196F3','#4CAF50','#9C27B0','#FF9800','#F44336'][Math.floor(Math.random()*5)],
     };
     await saveRegisteredUsers([...registeredUsers, userData]);
+
     const savedUser = { ...userData };
     delete savedUser.password;
     setRecordsUnlocked(false);
@@ -183,14 +186,14 @@ export const AppProvider = ({ children }) => {
     await saveRegisteredUsers(updated);
     return true;
   };
-
+//enablePasscode: hàm bật tính năng mã PIN để bảo vệ hồ sơ khám bệnh
   const enablePasscode = async (code) => {
     if (!user?.id) return;
     await savePasscode(user.id, code);
     setPasscodeEnabled(true);
     setRecordsUnlocked(false);
   };
-
+//verifyPasscode: hàm kiểm tra mã PIN nhập vào có khớp với mã đã lưu trong AsyncStorage cho user hiện tại hay không
   const verifyPasscode = async (code) => {
     if (!user?.id) return false;
     const saved = await getPasscode(user.id);

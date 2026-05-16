@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { formatDateLong } from '../../utils/dateUtils';
+
 // RecordDetailScreen: hiển thị chi tiết một hồ sơ khám bệnh, bao gồm thông tin bác sĩ, chẩn đoán, đơn thuốc và ghi chú. Có phần lưu ý và nút liên hệ phòng khám. Giao diện chi tiết, dễ đọc, với các section rõ ràng.
 export default function RecordDetailScreen({ navigation, route }) {
   const { record } = route.params;
@@ -92,49 +93,157 @@ export default function RecordDetailScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: Colors.primary },
-  inner: { flex: 1, backgroundColor: Colors.background },
+  safe: {
+    flex: 1,
+    backgroundColor: Colors.primary
+  },
+
+  inner: {
+    flex: 1,
+    backgroundColor: Colors.background
+  },
+
   header: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    backgroundColor: Colors.primary, paddingHorizontal: 16, paddingVertical: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 16,
+    paddingVertical: 16
   },
-  backBtn: { width: 40, height: 40, justifyContent: 'center', alignItems: 'center' },
-  headerTitle: { color: Colors.white, fontSize: 18, fontWeight: '700' },
+
+  backBtn: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  headerTitle: {
+    color: Colors.white,
+    fontSize: 18,
+    fontWeight: '700'
+  },
+
   heroCard: {
-    backgroundColor: Colors.primary, flexDirection: 'row', alignItems: 'center',
-    padding: 20,
+    backgroundColor: Colors.primary,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20
   },
+
   heroIcon: {
-    width: 64, height: 64, borderRadius: 18, backgroundColor: 'rgba(255,255,255,0.2)',
-    justifyContent: 'center', alignItems: 'center', marginRight: 16,
+    width: 64,
+    height: 64,
+    borderRadius: 18,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 16
   },
-  heroInfo: {},
-  heroTitle: { color: Colors.white, fontSize: 18, fontWeight: '700' },
-  heroDate: { color: 'rgba(255,255,255,0.8)', fontSize: 13, marginTop: 4 },
-  heroTime: { color: 'rgba(255,255,255,0.8)', fontSize: 13 },
+
+  heroInfo: {
+  },
+
+  heroTitle: {
+    color: Colors.white,
+    fontSize: 18,
+    fontWeight: '700'
+  },
+
+  heroDate: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 13,
+    marginTop: 4
+  },
+
+  heroTime: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 13
+  },
+
   card: {
-    backgroundColor: Colors.white, margin: 16, marginBottom: 0, borderRadius: 16,
-    padding: 18, shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08, shadowRadius: 6, elevation: 3,
+    backgroundColor: Colors.white,
+    margin: 16,
+    marginBottom: 0,
+    borderRadius: 16,
+    padding: 18,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3
   },
-  cardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 14 },
+
+  cardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 14
+  },
+
   cardIconBox: {
-    width: 36, height: 36, borderRadius: 10, backgroundColor: Colors.primaryLight,
-    justifyContent: 'center', alignItems: 'center', marginRight: 10,
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    backgroundColor: Colors.primaryLight,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 10
   },
-  cardTitle: { fontSize: 15, fontWeight: '700', color: Colors.text },
+
+  cardTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: Colors.text
+  },
+
   infoRow: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: Colors.background,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background
   },
-  infoLabel: { fontSize: 13, color: Colors.textSecondary },
-  infoValue: { fontSize: 14, fontWeight: '600', color: Colors.text },
-  contentText: { fontSize: 14, color: Colors.text, lineHeight: 22 },
-  noteText: { fontSize: 14, color: Colors.textSecondary, lineHeight: 22, marginBottom: 12 },
+
+  infoLabel: {
+    fontSize: 13,
+    color: Colors.textSecondary
+  },
+
+  infoValue: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: Colors.text
+  },
+
+  contentText: {
+    fontSize: 14,
+    color: Colors.text,
+    lineHeight: 22
+  },
+
+  noteText: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    lineHeight: 22,
+    marginBottom: 12
+  },
+
   clinicBtn: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    borderWidth: 1.5, borderColor: Colors.primary, borderRadius: 10,
-    paddingVertical: 10, gap: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1.5,
+    borderColor: Colors.primary,
+    borderRadius: 10,
+    paddingVertical: 10,
+    gap: 6
   },
-  clinicBtnText: { color: Colors.primary, fontSize: 14, fontWeight: '700' },
+
+  clinicBtnText: {
+    color: Colors.primary,
+    fontSize: 14,
+    fontWeight: '700'
+  }
 });

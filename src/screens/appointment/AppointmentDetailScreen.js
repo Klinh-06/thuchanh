@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
 import { formatDateLong, getStatusLabel } from '../../utils/dateUtils';
-// AppointmentDetailScreen: hiển thị chi tiết lịch hẹn khám, bao gồm thông tin bác sĩ, ngày giờ, trạng thái, mã lịch hẹn, số thứ tự (nếu có), ghi chú. Cho phép hủy lịch nếu sắp tới, đánh giá bác sĩ nếu đã hoàn thành. Nếu có hồ sơ khám bệnh liên quan, hiển thị link đến hồ sơ đó.
+// AppointmentDetailScreen: hiển thị chi tiết lịch hẹn khám
 export default function AppointmentDetailScreen({ navigation, route }) {
   const { appointments, cancelAppointment, completeAppointment, getRecordByAppointment } = useApp();
   const appointmentId = route.params.appointment.id;
@@ -28,7 +28,9 @@ export default function AppointmentDetailScreen({ navigation, route }) {
     completed: { color: Colors.completed, bg: Colors.completedBg, icon: 'checkmark-circle' },
     cancelled: { color: Colors.cancelled, bg: Colors.cancelledBg, icon: 'close-circle' },
   };
+
   const cfg = statusConfig[appointment.status] || statusConfig.upcoming;
+
 // Handle appointment cancellation
   const handleCancel = () => {
     Alert.alert(
@@ -47,6 +49,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
       ]
     );
   };
+
 // Handle appointment completion
   const handleComplete = () => {
     Alert.alert(
@@ -89,6 +92,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
+
         //Appointment status banner
         {/* Status Banner */}
         <View style={[styles.statusBanner, { backgroundColor: cfg.bg }]}>
@@ -120,6 +124,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
           {appointment.queueNumber ? <Row icon="list-outline" label="Số thứ tự" value={appointment.queueNumber} valueColor={Colors.primary} /> : null}
           {appointment.note ? <Row icon="document-text-outline" label="Ghi chú" value={appointment.note} /> : null}
         </View>
+
       // Medical record section
         {/* Medical Record Link */}
         {appointment.status === 'completed' && (
@@ -146,6 +151,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
             )}
           </View>
         )}
+
         // Examination process steps
         {/* Quy trình khám — chỉ hiện khi sắp tới */}
         {appointment.status === 'upcoming' && (
@@ -211,6 +217,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
               </TouchableOpacity>
             </>
           )}
+
           {appointment.status === 'completed' && (
             <TouchableOpacity
               style={styles.actionBtn}
@@ -233,59 +240,264 @@ export default function AppointmentDetailScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: Colors.primary },
-  inner: { flex: 1, backgroundColor: Colors.background },
+  safe: { 
+    flex: 1, 
+    backgroundColor: 
+    Colors.primary },
+  inner: { 
+    flex: 1, 
+    backgroundColor: 
+    Colors.background },
   header: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    backgroundColor: Colors.primary, paddingHorizontal: 16, paddingVertical: 16,
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between',
+    backgroundColor: Colors.primary, 
+    paddingHorizontal: 16, 
+    paddingVertical: 16,
   },
-  backBtn: { width: 40, height: 40, justifyContent: 'center', alignItems: 'center' },
-  headerTitle: { color: Colors.white, fontSize: 18, fontWeight: '700' },
+  backBtn: { width: 40, 
+    height: 40, 
+    justifyContent: 'center', 
+    alignItems: 'center' },
+  headerTitle: { 
+    color: Colors.white, 
+    fontSize: 18, 
+    fontWeight: '700' },
   statusBanner: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    padding: 14, gap: 8,
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'center',
+    padding: 14, 
+    gap: 8,
   },
-  statusText: { fontSize: 16, fontWeight: '700' },
+  statusText: { 
+    fontSize: 16, 
+    fontWeight: '700' },
   card: {
-    backgroundColor: Colors.white, margin: 16, marginBottom: 0, borderRadius: 16,
-    padding: 18, shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08, shadowRadius: 6, elevation: 3,
+    backgroundColor: Colors.white,
+    margin: 16, 
+    marginBottom: 0, 
+    borderRadius: 16,
+    padding: 18, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08, 
+    shadowRadius: 6, 
+    elevation: 3,
   },
-  cardTitle: { fontSize: 15, fontWeight: '700', color: Colors.text, marginBottom: 14 },
-  doctorRow: { flexDirection: 'row', alignItems: 'center', gap: 14 },
-  avatar: { width: 56, height: 56, borderRadius: 28, justifyContent: 'center', alignItems: 'center' },
-  initials: { color: Colors.white, fontSize: 20, fontWeight: '700' },
-  doctorName: { fontSize: 16, fontWeight: '700', color: Colors.text },
-  specialty: { fontSize: 13, color: Colors.textSecondary, marginTop: 2 },
-  row: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 12 },
+  cardTitle: { 
+    fontSize: 15, 
+    fontWeight: '700', 
+    color: Colors.text, 
+    marginBottom: 14 },
+  doctorRow: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    gap: 14 },
+  avatar: { 
+    width: 56, 
+    height: 56, 
+    borderRadius: 28, 
+    justifyContent: 'center', 
+    alignItems: 'center' },
+  initials: { 
+    color: Colors.white,
+     fontSize: 20, 
+     fontWeight: '700' },
+  doctorName: { 
+    fontSize: 16, 
+    fontWeight: '700', 
+    color: Colors.text },
+  specialty: { 
+    fontSize: 13, 
+    color: Colors.textSecondary, 
+    marginTop: 2 },
+  row: { 
+    flexDirection: 'row', 
+    alignItems: 'flex-start', 
+    marginBottom: 12 },
   rowIcon: {
-    width: 36, height: 36, borderRadius: 10, backgroundColor: Colors.primaryLight,
-    justifyContent: 'center', alignItems: 'center', marginRight: 12,
+    width: 36, 
+    height: 36, 
+    borderRadius: 10, 
+    backgroundColor: Colors.primaryLight,
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    marginRight: 12,
   },
-  rowContent: { flex: 1 },
-  rowLabel: { fontSize: 12, color: Colors.textSecondary },
-  rowValue: { fontSize: 14, color: Colors.text, fontWeight: '500', marginTop: 2 },
-  recordLink: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: Colors.background, borderRadius: 12, padding: 12 },
-  recordLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  recordIcon: { width: 44, height: 44, borderRadius: 12, backgroundColor: Colors.primaryLight, justifyContent: 'center', alignItems: 'center' },
-  recordTitle: { fontSize: 14, fontWeight: '700', color: Colors.text },
-  recordDate: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
-  noRecord: { fontSize: 14, color: Colors.textSecondary, fontStyle: 'italic' },
-  actionBtn: { flexDirection: 'row', alignItems: 'center', backgroundColor: Colors.background, borderRadius: 12, padding: 14, marginBottom: 10, gap: 12 },
-  actionComplete: { backgroundColor: Colors.completedBg },
-  actionDanger: { backgroundColor: Colors.cancelledBg },
-  actionText: { fontSize: 14, fontWeight: '600', color: Colors.text, flex: 1 },
-  cancelledNote: { fontSize: 14, color: Colors.textSecondary, fontStyle: 'italic', textAlign: 'center' },
-  stepRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 16 },
-  stepCircle: { width: 28, height: 28, borderRadius: 14, backgroundColor: Colors.primary, justifyContent: 'center', alignItems: 'center', zIndex: 1 },
-  stepNum: { color: Colors.white, fontSize: 13, fontWeight: '700' },
-  stepLine: { position: 'absolute', left: 13, top: 28, width: 2, height: 36, backgroundColor: Colors.primaryLight },
-  stepContent: { flex: 1, marginLeft: 12, paddingTop: 2 },
-  stepFloorRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginBottom: 3 },
-  stepFloor: { fontSize: 12, color: Colors.primary, fontWeight: '700' },
-  stepPersonRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginBottom: 3, marginTop: 2 },
-  stepPerson: { fontSize: 11, color: Colors.textSecondary },
-  stepDesc: { fontSize: 13, color: Colors.textSecondary, lineHeight: 19 },
-  cccdNote: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 4, backgroundColor: '#E1F5FE', borderRadius: 8, padding: 10 },
-  cccdNoteText: { fontSize: 13, color: '#0277BD', flex: 1 },
+  rowContent: {
+  flex: 1,
+  },
+
+  rowLabel: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+  },
+
+  rowValue: {
+    fontSize: 14,
+    color: Colors.text,
+    fontWeight: '500',
+    marginTop: 2,
+  },
+
+  recordLink: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.background,
+    borderRadius: 12,
+    padding: 12,
+  },
+
+  recordLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+
+  recordIcon: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: Colors.primaryLight,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  recordTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: Colors.text,
+  },
+
+  recordDate: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    marginTop: 2,
+  },
+
+  noRecord: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    fontStyle: 'italic',
+  },
+
+  actionBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.background,
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 10,
+    gap: 12,
+  },
+
+  actionComplete: {
+    backgroundColor: Colors.completedBg,
+  },
+
+  actionDanger: {
+    backgroundColor: Colors.cancelledBg,
+  },
+
+  actionText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: Colors.text,
+    flex: 1,
+  },
+
+  cancelledNote: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    fontStyle: 'italic',
+    textAlign: 'center',
+  },
+
+  stepRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 16,
+  },
+
+  stepCircle: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: Colors.primary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1,
+  },
+
+  stepNum: {
+    color: Colors.white,
+    fontSize: 13,
+    fontWeight: '700',
+  },
+
+  stepLine: {
+    position: 'absolute',
+    left: 13,
+    top: 28,
+    width: 2,
+    height: 36,
+    backgroundColor: Colors.primaryLight,
+  },
+
+  stepContent: {
+    flex: 1,
+    marginLeft: 12,
+    paddingTop: 2,
+  },
+
+  stepFloorRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    marginBottom: 3,
+  },
+
+  stepFloor: {
+    fontSize: 12,
+    color: Colors.primary,
+    fontWeight: '700',
+  },
+
+  stepPersonRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    marginBottom: 3,
+    marginTop: 2,
+  },
+
+  stepPerson: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+  },
+
+  stepDesc: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    lineHeight: 19,
+  },
+
+  cccdNote: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 4,
+    backgroundColor: '#E1F5FE',
+    borderRadius: 8,
+    padding: 10,
+  },
+
+  cccdNoteText: {
+    fontSize: 13,
+    color: '#0277BD',
+    flex: 1,
+  },
 });

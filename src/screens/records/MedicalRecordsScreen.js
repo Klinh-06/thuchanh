@@ -7,9 +7,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
 import { formatDateLong } from '../../utils/dateUtils';
+
 // Medical records listing screen
 export default function MedicalRecordsScreen({ navigation }) {
   const { records, passcodeEnabled, recordsUnlocked } = useApp();
+
 // Lock records when PIN protection is enabled
   if (passcodeEnabled && !recordsUnlocked) {
     return (
@@ -33,6 +35,7 @@ export default function MedicalRecordsScreen({ navigation }) {
       </SafeAreaView>
     );
   }
+
 // Medical record card item
   const RecordCard = ({ item }) => (
     <TouchableOpacity
@@ -98,46 +101,210 @@ export default function MedicalRecordsScreen({ navigation }) {
   </SafeAreaView>
   );
 }
+
 // Medical records screen styles
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: Colors.primary },
-  inner: { flex: 1, backgroundColor: Colors.background },
-  header: { backgroundColor: Colors.primary, paddingHorizontal: 20, paddingVertical: 16 },
-  headerTitle: { color: Colors.white, fontSize: 20, fontWeight: '700' },
-  headerSub: { color: 'rgba(255,255,255,0.8)', fontSize: 13, marginTop: 2 },
-  list: { padding: 16, gap: 12 },
+  safe: {
+    flex: 1,
+    backgroundColor: Colors.primary
+  },
+
+  inner: {
+    flex: 1,
+    backgroundColor: Colors.background
+  },
+
+  header: {
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 20,
+    paddingVertical: 16
+  },
+
+  headerTitle: {
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: '700'
+  },
+
+  headerSub: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 13,
+    marginTop: 2
+  },
+
+  list: {
+    padding: 16,
+    gap: 12
+  },
+
   card: {
-    backgroundColor: Colors.white, borderRadius: 16, padding: 16,
-    flexDirection: 'row', alignItems: 'center',
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 6, elevation: 3,
+    backgroundColor: Colors.white,
+    borderRadius: 16,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3
   },
-  cardLeft: { flex: 1, flexDirection: 'row', alignItems: 'flex-start' },
+
+  cardLeft: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-start'
+  },
+
   iconBox: {
-    width: 52, height: 52, borderRadius: 14, backgroundColor: Colors.primaryLight,
-    justifyContent: 'center', alignItems: 'center', marginRight: 14,
+    width: 52,
+    height: 52,
+    borderRadius: 14,
+    backgroundColor: Colors.primaryLight,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 14
   },
-  info: { flex: 1 },
-  doctorName: { fontSize: 15, fontWeight: '700', color: Colors.text },
-  specialty: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
-  date: { fontSize: 12, color: Colors.textSecondary, marginTop: 4 },
-  diagnosisRow: { flexDirection: 'row', alignItems: 'center', marginTop: 6 },
-  diagnosisLabel: { fontSize: 12, color: Colors.textSecondary },
-  diagnosisValue: { fontSize: 12, color: Colors.primary, fontWeight: '600', flex: 1 },
+
+  info: {
+    flex: 1
+  },
+
+  doctorName: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: Colors.text
+  },
+
+  specialty: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    marginTop: 2
+  },
+
+  date: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    marginTop: 4
+  },
+
+  diagnosisRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 6
+  },
+
+  diagnosisLabel: {
+    fontSize: 12,
+    color: Colors.textSecondary
+  },
+
+  diagnosisValue: {
+    fontSize: 12,
+    color: Colors.primary,
+    fontWeight: '600',
+    flex: 1
+  },
+
   pinBanner: {
-    flexDirection: 'row', alignItems: 'center', backgroundColor: '#F3E5F5',
-    marginHorizontal: 16, marginTop: 12, borderRadius: 12, padding: 14,
-    borderLeftWidth: 4, borderLeftColor: '#7B1FA2',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F3E5F5',
+    marginHorizontal: 16,
+    marginTop: 12,
+    borderRadius: 12,
+    padding: 14,
+    borderLeftWidth: 4,
+    borderLeftColor: '#7B1FA2'
   },
-  pinBannerTitle: { fontSize: 13, fontWeight: '700', color: '#4A148C', marginBottom: 2 },
-  pinBannerSub: { fontSize: 12, color: '#6A1B9A', lineHeight: 17 },
-  empty: { alignItems: 'center', marginTop: 80, paddingHorizontal: 32, gap: 12 },
-  emptyIcon: { width: 100, height: 100, borderRadius: 50, backgroundColor: Colors.background, justifyContent: 'center', alignItems: 'center' },
-  emptyTitle: { fontSize: 18, fontWeight: '700', color: Colors.text },
-  emptyText: { fontSize: 14, color: Colors.textSecondary, textAlign: 'center', lineHeight: 22 },
-  lockedBody: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32, gap: 12 },
-  lockIconBox: { width: 100, height: 100, borderRadius: 50, backgroundColor: Colors.primaryLight, justifyContent: 'center', alignItems: 'center', marginBottom: 8 },
-  lockedTitle: { fontSize: 20, fontWeight: '700', color: Colors.text },
-  lockedSub: { fontSize: 14, color: Colors.textSecondary, textAlign: 'center', lineHeight: 22 },
-  unlockBtn: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: Colors.primary, borderRadius: 14, paddingVertical: 14, paddingHorizontal: 32, marginTop: 8 },
-  unlockBtnText: { color: Colors.white, fontSize: 15, fontWeight: '700' },
+
+  pinBannerTitle: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: '#4A148C',
+    marginBottom: 2
+  },
+
+  pinBannerSub: {
+    fontSize: 12,
+    color: '#6A1B9A',
+    lineHeight: 17
+  },
+
+  empty: {
+    alignItems: 'center',
+    marginTop: 80,
+    paddingHorizontal: 32,
+    gap: 12
+  },
+
+  emptyIcon: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: Colors.background,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  emptyTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: Colors.text
+  },
+
+  emptyText: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    textAlign: 'center',
+    lineHeight: 22
+  },
+
+  lockedBody: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 32,
+    gap: 12
+  },
+
+  lockIconBox: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: Colors.primaryLight,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8
+  },
+
+  lockedTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: Colors.text
+  },
+
+  lockedSub: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    textAlign: 'center',
+    lineHeight: 22
+  },
+
+  unlockBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    backgroundColor: Colors.primary,
+    borderRadius: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 32,
+    marginTop: 8
+  },
+
+  unlockBtnText: {
+    color: Colors.white,
+    fontSize: 15,
+    fontWeight: '700'
+  }
 });

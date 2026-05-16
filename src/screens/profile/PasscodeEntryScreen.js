@@ -117,21 +117,123 @@ export default function PasscodeEntryScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: Colors.primary },
-  inner: { flex: 1, backgroundColor: Colors.background },
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: Colors.primary, paddingHorizontal: 16, paddingVertical: 16 },
-  backBtn: { width: 40, height: 40, justifyContent: 'center', alignItems: 'center' },
-  headerTitle: { color: Colors.white, fontSize: 18, fontWeight: '700' },
-  body: { flex: 1, alignItems: 'center', paddingTop: 40, paddingHorizontal: 24 },
-  lockIcon: { width: 88, height: 88, borderRadius: 44, backgroundColor: Colors.primaryLight, justifyContent: 'center', alignItems: 'center', marginBottom: 20 },
-  title: { fontSize: 18, fontWeight: '700', color: Colors.text, textAlign: 'center', marginBottom: 32 },
-  dotsRow: { flexDirection: 'row', gap: 16, marginBottom: 16 },
-  dot: { width: 16, height: 16, borderRadius: 8, borderWidth: 2, borderColor: Colors.primary, backgroundColor: 'transparent' },
-  dotFilled: { backgroundColor: Colors.primary },
-  attemptsText: { fontSize: 13, color: Colors.error, marginBottom: 16, textAlign: 'center' },
-  keypad: { marginTop: 16, width: '100%', maxWidth: 300 },
-  keyRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 16 },
-  keyBtn: { width: 80, height: 80, borderRadius: 40, backgroundColor: Colors.white, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 4, elevation: 3 },
-  keyEmpty: { width: 80, height: 80 },
-  keyText: { fontSize: 28, fontWeight: '600', color: Colors.text },
+  safe: {
+    flex: 1,
+    backgroundColor: Colors.primary
+  },
+
+  inner: {
+    flex: 1,
+    backgroundColor: Colors.background
+  },
+
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 16,
+    paddingVertical: 16
+  },
+
+  backBtn: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  headerTitle: {
+    color: Colors.white,
+    fontSize: 18,
+    fontWeight: '700'
+  },
+
+  body: {
+    flex: 1,
+    alignItems: 'center',
+    paddingTop: 40,
+    paddingHorizontal: 24
+  },
+
+  lockIcon: {
+    width: 88,
+    height: 88,
+    borderRadius: 44,
+    backgroundColor: Colors.primaryLight,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20
+  },
+
+  title: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: Colors.text,
+    textAlign: 'center',
+    marginBottom: 32
+  },
+
+  dotsRow: {
+    flexDirection: 'row',
+    gap: 16,
+    marginBottom: 16
+  },
+
+  dot: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: Colors.primary,
+    backgroundColor: 'transparent'
+  },
+
+  dotFilled: {
+    backgroundColor: Colors.primary
+  },
+
+  attemptsText: {
+    fontSize: 13,
+    color: Colors.error,
+    marginBottom: 16,
+    textAlign: 'center'
+  },
+
+  keypad: {
+    marginTop: 16,
+    width: '100%',
+    maxWidth: 300
+  },
+
+  keyRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16
+  },
+
+  keyBtn: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+    elevation: 3
+  },
+
+  keyEmpty: {
+    width: 80,
+    height: 80
+  },
+
+  keyText: {
+    fontSize: 28,
+    fontWeight: '600',
+    color: Colors.text
+  }
 });

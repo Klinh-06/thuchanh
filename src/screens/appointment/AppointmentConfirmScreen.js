@@ -7,7 +7,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
 import { formatDateLong } from '../../utils/dateUtils';
-//AppointmentConfirmScreen: hiển thị thông tin chi tiết về lịch hẹn trước khi người dùng xác nhận đặt lịch, bao gồm thông tin bác sĩ, ngày giờ khám, quy trình khám và lưu ý mang theo CCCD. Có nút xác nhận đặt lịch và quay lại chỉnh sửa. Sau khi xác nhận
+
+//AppointmentConfirmScreen: hiển thị thông tin chi tiết về lịch hẹn trước khi người dùng xác nhận đặt lịch
 export default function AppointmentConfirmScreen({ navigation, route }) {
   const { doctor, date, time, note } = route.params;
   const { bookAppointment, user } = useApp();
