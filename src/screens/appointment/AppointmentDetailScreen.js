@@ -93,7 +93,6 @@ export default function AppointmentDetailScreen({ navigation, route }) {
 
       <ScrollView showsVerticalScrollIndicator={false}>
 
-        //Appointment status banner
         {/* Status Banner */}
         <View style={[styles.statusBanner, { backgroundColor: cfg.bg }]}>
           <Ionicons name={cfg.icon} size={24} color={cfg.color} />
@@ -125,7 +124,6 @@ export default function AppointmentDetailScreen({ navigation, route }) {
           {appointment.note ? <Row icon="document-text-outline" label="Ghi chú" value={appointment.note} /> : null}
         </View>
 
-      // Medical record section
         {/* Medical Record Link */}
         {appointment.status === 'completed' && (
           <View style={styles.card}>
@@ -152,7 +150,6 @@ export default function AppointmentDetailScreen({ navigation, route }) {
           </View>
         )}
 
-        // Examination process steps
         {/* Quy trình khám — chỉ hiện khi sắp tới */}
         {appointment.status === 'upcoming' && (
           <View style={styles.card}>
@@ -201,7 +198,6 @@ export default function AppointmentDetailScreen({ navigation, route }) {
                 onPress={() => navigation.navigate('Reschedule', { appointment })}
               >
                 <Ionicons name="calendar-outline" size={18} color={Colors.primary} />
-                // Navigate to reschedule screen
                 <Text style={styles.actionText}>Đổi lịch hẹn</Text>
                 <Ionicons name="chevron-forward" size={16} color={Colors.textSecondary} style={{ marginLeft: 'auto' }} />
               </TouchableOpacity>
