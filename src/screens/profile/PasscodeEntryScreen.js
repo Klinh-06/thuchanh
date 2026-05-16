@@ -9,7 +9,7 @@ import { useApp } from '../../context/AppContext';
 
 const PIN_LENGTH = 6;
 const MAX_ATTEMPTS = 5;
-
+// PasscodeEntryScreen: màn hình nhập mã PIN để mở khóa hồ sơ khám bệnh. 
 export default function PasscodeEntryScreen({ navigation }) {
   const [pin, setPin] = useState('');
   const [attempts, setAttempts] = useState(0);

@@ -12,7 +12,7 @@ const PIN_LENGTH = 6;
 // step 0: nhập PIN cũ (chỉ khi đã có PIN)
 // step 1: nhập PIN mới
 // step 2: xác nhận PIN mới
-
+// SetPasscodeScreen: cho phép người dùng đặt hoặc đổi mã PIN để bảo vệ hồ sơ khám bệnh. Nếu đã có PIN, yêu cầu nhập PIN cũ trước khi đặt PIN mới. Giao diện nhập PIN gồm 6 ô trống, khi nhập sẽ hiển thị dấu chấm. Nếu nhập sai sẽ có hiệu ứng rung và thông báo lỗi. Sau khi đặt thành công sẽ lưu mã PIN và bảo vệ hồ sơ khám bệnh.
 export default function SetPasscodeScreen({ navigation }) {
   const { enablePasscode, verifyPasscode, passcodeEnabled } = useApp();
   const [step, setStep] = useState(passcodeEnabled ? 0 : 1);

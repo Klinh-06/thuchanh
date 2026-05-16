@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { formatDateLong } from '../../utils/dateUtils';
-
+// RecordDetailScreen: hiển thị chi tiết một hồ sơ khám bệnh, bao gồm thông tin bác sĩ, chẩn đoán, đơn thuốc và ghi chú. Có phần lưu ý và nút liên hệ phòng khám. Giao diện chi tiết, dễ đọc, với các section rõ ràng.
 export default function RecordDetailScreen({ navigation, route }) {
   const { record } = route.params;
 

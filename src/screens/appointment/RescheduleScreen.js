@@ -8,7 +8,7 @@ import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
 import { getNext14Days, getDayKey, formatDate, formatDateLong } from '../../utils/dateUtils';
 import { doctors } from '../../data/mockData';
-
+// RescheduleScreen: cho phép người dùng đổi lịch hẹn khám đã đặt trước đó. Hiển thị lịch hẹn hiện tại và giao diện chọn ngày giờ mới dựa trên lịch của bác sĩ. Các slot đã có người đặt sẽ hiển thị là đầy, slot trùng với lịch khác của người dùng sẽ hiển thị là trùng. Sau khi chọn xong, có nút xác nhận đổi lịch với bước xác nhận cuối cùng. Nếu thành công sẽ cập nhật lại lịch hẹn và thông báo, nếu lỗi sẽ hiển thị lỗi cụ thể (ví dụ slot đã đầy).
 export default function RescheduleScreen({ navigation, route }) {
   const { appointment } = route.params;
   const { rescheduleAppointment, appointments, globalBookings } = useApp();

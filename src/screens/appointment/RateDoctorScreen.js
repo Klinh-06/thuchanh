@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
-
+//RateDoctorScreen: cho phép người dùng đánh giá bác sĩ sau khi khám xong, với hệ thống sao và nhận xét chi tiết. Nếu đã đánh giá trước đó, có thể sửa đổi đánh giá. Sau khi gửi đánh giá sẽ
 export default function RateDoctorScreen({ navigation, route }) {
   const { appointment } = route.params;
   const { rateAppointment } = useApp();

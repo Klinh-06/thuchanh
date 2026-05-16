@@ -9,7 +9,7 @@ import { useApp } from '../../context/AppContext';
 import { formatDate, getStatusLabel } from '../../utils/dateUtils';
 // Appointment status tabs
 const TABS = ['Sắp tới', 'Đã khám', 'Đã hủy'];
-
+//MyAppointmentsScreen: hiển thi lịch hẹn của người dùng, phân loại theo trạng thái (sắp tới, đã khám, đã hủy) với badge số lượng. 
 export default function MyAppointmentsScreen({ navigation }) {
   const [activeTab, setActiveTab] = useState(0);
   const {
@@ -141,7 +141,7 @@ export default function MyAppointmentsScreen({ navigation }) {
         ListEmptyComponent={
           <View style={styles.empty}>
             <Ionicons name="calendar-outline" size={64} color={Colors.textLight} />
-            <Text style={styles.emptyTitle}>Chưa có lịch hẹn nào</Text>
+            <Text style={styles.emptyTitle}>Chưa có lịch hẹn n</Text>
             <Text style={styles.emptyText}>
               {activeTab === 0 ? 'Đặt lịch khám ngay hôm nay!' : 'Không có dữ liệu'}
             </Text>

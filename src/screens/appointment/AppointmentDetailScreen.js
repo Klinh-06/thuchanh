@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
 import { formatDateLong, getStatusLabel } from '../../utils/dateUtils';
-
+// AppointmentDetailScreen: hiển thị chi tiết lịch hẹn khám, bao gồm thông tin bác sĩ, ngày giờ, trạng thái, mã lịch hẹn, số thứ tự (nếu có), ghi chú. Cho phép hủy lịch nếu sắp tới, đánh giá bác sĩ nếu đã hoàn thành. Nếu có hồ sơ khám bệnh liên quan, hiển thị link đến hồ sơ đó.
 export default function AppointmentDetailScreen({ navigation, route }) {
   const { appointments, cancelAppointment, completeAppointment, getRecordByAppointment } = useApp();
   const appointmentId = route.params.appointment.id;
