@@ -29,7 +29,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
     cancelled: { color: Colors.cancelled, bg: Colors.cancelledBg, icon: 'close-circle' },
   };
   const cfg = statusConfig[appointment.status] || statusConfig.upcoming;
-
+// Handle appointment cancellation
   const handleCancel = () => {
     Alert.alert(
       'Hủy lịch khám',
