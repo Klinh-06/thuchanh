@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../theme/colors';
 import { useApp } from '../../context/AppContext';
 import { formatDate, getStatusLabel } from '../../utils/dateUtils';
-
+// Appointment status tabs
 const TABS = ['Sắp tới', 'Đã khám', 'Đã hủy'];
 
 export default function MyAppointmentsScreen({ navigation }) {
@@ -108,7 +108,7 @@ export default function MyAppointmentsScreen({ navigation }) {
     <SafeAreaView edges={['top']} style={styles.safe}>
       <View style={styles.inner}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Lịch hẹn của tôi</Text>
+        <Text style={styles.headerTitle}>Lịch hẹn của tôi </Text>
       </View>
 
       {/* Tabs */}
