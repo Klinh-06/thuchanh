@@ -206,3 +206,5 @@ MediCare/
 ---
 
 *Phiên bản 1.1.0*
+## Video demo
+https://drive.google.com/file/d/1DyZb2a-UPfoc4nPrASW0LjBWx9ynkbyk/view?usp=sharing
