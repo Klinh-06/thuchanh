@@ -28,6 +28,7 @@ export default function RescheduleScreen({ navigation, route }) {
   // 'full'    — bác sĩ đã có người khác đặt
   // 'conflict'— bạn có lịch khác cùng giờ
   // false     — slot trống
+  // Check booking state of selected slot
   const slotState = (date, time) => {
     const full = globalBookings.some(
       b => b.doctorId === appointment.doctorId &&
