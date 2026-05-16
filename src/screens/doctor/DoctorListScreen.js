@@ -141,32 +141,55 @@ export default function DoctorListScreen({ navigation, route }) {
       </View>
 
       {/* Sort Modal */}
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <Pressable style={styles.overlay} onPress={() => setModalVisible(false)}>
-          <Pressable style={styles.modalBox} onPress={() => {}}>
-            <Text style={styles.modalTitle}>Sắp xếp theo</Text>
-            {SORT_OPTIONS.map(opt => (
-              <TouchableOpacity
-                key={opt.key}
-                style={styles.modalOption}
-                onPress={() => { setSortKey(opt.key); setModalVisible(false); }}
-              >
-                <Text style={[styles.modalOptionText, sortKey === opt.key && styles.modalOptionActive]}>
-                  {opt.label}
-                </Text>
-                {sortKey === opt.key && (
-                  <Ionicons name="checkmark" size={18} color={Colors.primary} />
-                )}
-              </TouchableOpacity>
-            ))}
-          </Pressable>
-        </Pressable>
-      </Modal>
+      {/* Sort Modal */}
+<Modal
+  visible={modalVisible}
+  transparent
+  animationType="fade"
+  onRequestClose={() => setModalVisible(false)}
+>
+  <Pressable
+    style={styles.overlay}
+    onPress={() => setModalVisible(false)}
+  >
+    <Pressable
+      style={styles.modalBox}
+      onPress={() => {}}
+    >
+      <Text style={styles.modalTitle}>
+        Chọn cách sắp xếp
+      </Text>
+
+      {SORT_OPTIONS.map((option) => (
+        <TouchableOpacity
+          key={option.key}
+          style={styles.modalOption}
+          onPress={() => {
+            setSortKey(option.key);
+            setModalVisible(false);
+          }}
+        >
+          <Text
+            style={[
+              styles.modalOptionText,
+              sortKey === option.key && styles.modalOptionActive,
+            ]}
+          >
+            {option.label}
+          </Text>
+
+          {sortKey === option.key && (
+            <Ionicons
+              name="checkmark"
+              size={18}
+              color={Colors.primary}
+            />
+          )}
+        </TouchableOpacity>
+      ))}
+    </Pressable>
+  </Pressable>
+</Modal>
     </SafeAreaView>
   );
 }
@@ -225,16 +248,7 @@ const styles = StyleSheet.create({
   bookText: { color: Colors.white, fontSize: 13, fontWeight: '700' },
   empty: { alignItems: 'center', marginTop: 60 },
   emptyText: { fontSize: 15, color: Colors.textSecondary, marginTop: 12 },
-  overlay: {
-    flex: 1, backgroundColor: 'rgba(0,0,0,0.4)',
-    justifyContent: 'center', alignItems: 'center',
-  },
-  modalBox: {
-    backgroundColor: Colors.white, borderRadius: 20, width: 300,
-    paddingTop: 20, paddingBottom: 8, overflow: 'hidden',
-    shadowColor: '#000', shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.15, shadowRadius: 20, elevation: 10,
-  },
+  
   modalTitle: {
     fontSize: 16, fontWeight: '700', color: Colors.text,
     paddingHorizontal: 20, marginBottom: 12,
