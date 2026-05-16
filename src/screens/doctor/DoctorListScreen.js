@@ -87,45 +87,27 @@ export default function DoctorListScreen({ navigation, route }) {
           </TouchableOpacity>
         </View>
 
-        {/* Search and Filter */}
-<View style={styles.topRow}>
-  <View style={styles.searchWrap}>
-    <Ionicons
-      name="search-outline"
-      size={18}
-      color={Colors.textSecondary}
-    />
-
-    <TextInput
-      style={styles.searchInput}
-      placeholder="Nhập tên bác sĩ..."
-      value={search}
-      onChangeText={setSearch}
-      placeholderTextColor={Colors.textLight}
-    />
-
-    {search.length > 0 && (
-      <TouchableOpacity onPress={() => setSearch('')}>
-        <Ionicons
-          name="close-circle"
-          size={18}
-          color={Colors.textSecondary}
-        />
-      </TouchableOpacity>
-    )}
-  </View>
-
-  <TouchableOpacity
-    style={styles.filterBtn}
-    onPress={() => setModalVisible(true)}
-  >
-    <Ionicons
-      name="options-outline"
-      size={20}
-      color={Colors.primary}
-    />
-  </TouchableOpacity>
-</View>
+        {/* Search + Filter row */}
+        <View style={styles.topRow}>
+          <View style={styles.searchWrap}>
+            <Ionicons name="search-outline" size={18} color={Colors.textSecondary} />
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Tìm tên bác sĩ..."
+              value={search}
+              onChangeText={setSearch}
+              placeholderTextColor={Colors.textLight}
+            />
+            {search.length > 0 && (
+              <TouchableOpacity onPress={() => setSearch('')}>
+                <Ionicons name="close-circle" size={18} color={Colors.textSecondary} />
+              </TouchableOpacity>
+            )}
+          </View>
+          <TouchableOpacity style={styles.filterBtn} onPress={() => setModalVisible(true)}>
+            <Ionicons name="options-outline" size={20} color={Colors.primary} />
+          </TouchableOpacity>
+        </View>
 
         {/* Active sort indicator */}
         {sortKey !== 'default' && (
