@@ -62,7 +62,7 @@ export default function MedicalRecordsScreen({ navigation }) {
       <View style={styles.inner}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Hồ sơ khám bệnh</Text>
-        <Text style={styles.headerSub}>{records.length} bản ghi</Text>
+        <Text style={styles.headerSub}>{records.length} Bản ghi</Text>
       </View>
 
       {!passcodeEnabled && (
