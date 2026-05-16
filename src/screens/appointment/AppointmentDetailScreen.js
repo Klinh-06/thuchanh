@@ -89,6 +89,7 @@ export default function AppointmentDetailScreen({ navigation, route }) {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
+        //Appointment status banner
         {/* Status Banner */}
         <View style={[styles.statusBanner, { backgroundColor: cfg.bg }]}>
           <Ionicons name={cfg.icon} size={24} color={cfg.color} />
