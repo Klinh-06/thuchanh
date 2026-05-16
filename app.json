@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "tenacious-indigo-croissant",
-    "slug": "snack-674d6ef8-133d-451c-8d80-b7d3d71d04a6",
+    "name": "MediCare",
+    "slug": "MediCare",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2196F3"
     },
     "ios": {
       "supportsTablet": true
