@@ -18,7 +18,7 @@ export default function RescheduleScreen({ navigation, route }) {
 
   const doctor = doctors.find(d => d.id === appointment.doctorId);
   const dates = getNext14Days();
-
+// Get available slots from doctor's schedule
   const getDoctorSlots = (date) => {
     if (!doctor || !date) return [];
     const dayKey = getDayKey(date);
