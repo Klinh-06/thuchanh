@@ -33,7 +33,7 @@ export default function MedicalRecordsScreen({ navigation }) {
       </SafeAreaView>
     );
   }
-
+// Medical record card item
   const RecordCard = ({ item }) => (
     <TouchableOpacity
       style={styles.card}
