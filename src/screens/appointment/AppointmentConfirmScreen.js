@@ -51,7 +51,7 @@ export default function AppointmentConfirmScreen({ navigation, route }) {
   const Row = ({ icon, label, value, valueColor }) => (
     <View style={styles.row}>
       <View style={styles.rowIcon}>
-        <Ionicons name={icon} size={20} color={Colors.primary} />
+        <Ionicons name={icon} size={18} color={Colors.primary} />
       </View>
       <View style={styles.rowContent}>
         <Text style={styles.rowLabel}>{label}</Text>
@@ -109,44 +109,19 @@ export default function AppointmentConfirmScreen({ navigation, route }) {
         {/* Appointment Details */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Chi tiết lịch hẹn</Text>
-          <Text icon="calendar-outline" label="Ngày khám" value={formatDateLong(date)} />
+          <Row icon="calendar-outline" label="Ngày khám" value={formatDateLong(date)} />
           <Row icon="time-outline" label="Giờ khám" value={time} />
           <Row icon="cash-outline" label="Phí khám" value={doctor.fee} valueColor={Colors.primary} />
           {note ? <Row icon="document-text-outline" label="Ghi chú" value={note} /> : null}
         </View>
 
-        {/* Patient Information */}
-<View style={styles.card}>
-  <Text style={styles.cardTitle}>
-    Thông tin bệnh nhân
-  </Text>
-
-  <Row
-    icon="person-outline"
-    label="Họ và tên"
-    value={user?.fullName || ''}
-  />
-
-  <Row
-    icon="card-outline"
-    label="CCCD / CMND"
-    value={user?.cccd || ''}
-  />
-
-  {user?.phone ? (
-    <Row
-      icon="call-outline"
-      label="Số điện thoại"
-      value={user.phone}
-    />
-  ) : null}
-
-  <Row
-    icon="calendar-outline"
-    label="Ngày đặt"
-    value="Hôm nay"
-  />
-</View>
+        {/* Patient */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Thông tin bệnh nhân</Text>
+          <Row icon="person-outline" label="Họ tên" value={user?.fullName || ''} />
+          <Row icon="card-outline" label="CCCD / CMND" value={user?.cccd || ''} />
+          {user?.phone ? <Row icon="call-outline" label="Điện thoại" value={user.phone} /> : null}
+        </View>
 
         {/* Quy trình khám */}
         <View style={styles.card}>
@@ -184,7 +159,7 @@ export default function AppointmentConfirmScreen({ navigation, route }) {
         <View style={styles.noteBox}>
           <Ionicons name="information-circle" size={20} color="#0288D1" style={{ marginTop: 1 }} />
           <View style={{ flex: 1, marginLeft: 10 }}>
-            <Text style={styles.noteTitle}>Lưu ý </Text>
+            <Text style={styles.noteTitle}>Lưu ý khi đến khám</Text>
             <Text style={styles.noteText}>Vui lòng mang theo <Text style={{ fontWeight: '700' }}>CCCD bản gốc hoặc VNeID</Text> để đối chiếu thông tin tại quầy lễ tân và phòng khám.</Text>
           </View>
         </View>
