@@ -24,12 +24,13 @@ export default function MyAppointmentsScreen({ navigation }) {
     completed: { color: Colors.completed, bg: Colors.completedBg, icon: 'checkmark-circle-outline' },
     cancelled: { color: Colors.cancelled, bg: Colors.cancelledBg, icon: 'close-circle-outline' },
   };
-
+// Appointment card component with dynamic status badge and actions based on appointment status
   const AppointmentCard = ({ item }) => {
     const cfg = statusConfig[item.status] || statusConfig.upcoming;
     return (
       <TouchableOpacity
         style={styles.card}
+        // Navigate to appointment detail screen
         onPress={() => navigation.navigate('AppointmentDetail', { appointment: item })}
       >
         <View style={styles.cardTop}>
