@@ -19,12 +19,6 @@ const REVIEW_POOL = [
   { name: 'Kim Anh', stars: 5, comment: 'Bác sĩ hỏi thăm rất kỹ trước khi kê đơn, không vội vàng. Cảm giác được quan tâm thật sự chứ không phải cho xong.' },
   { name: 'Trung Kiên', stars: 3, comment: 'Khám ổn nhưng mình hỏi thêm thì bác sĩ có vẻ bận. Hy vọng lần sau sẽ có thêm thời gian trao đổi hơn.' },
   { name: 'Hồng Vân', stars: 5, comment: 'Lần đầu đi khám mà không thấy lo lắng gì cả vì bác sĩ giải thích từng bước rõ ràng. Rất an tâm.' },
-  { name: 'Phú Lộc', stars: 4, comment: 'Tư vấn nhiệt tình, không bị cảm giác bị đuổi ra nhanh. Sẽ giới thiệu cho người thân.' },
-  { name: 'Thảo Vy', stars: 5, comment: 'Ba mình 70 tuổi, bác sĩ nói chuyện từ tốn với ông rất dễ chịu. Cảm ơn vì đã chăm sóc người lớn tuổi chu đáo.' },
-  { name: 'Minh Châu', stars: 4, comment: 'Được khám kỹ, không vội. Đơn thuốc có giải thích rõ uống như thế nào, mấy chỗ khác hiếm khi làm vậy.' },
-  { name: 'Văn Thắng', stars: 2, comment: 'Khám hơi nhanh, cảm giác chưa nói hết thì bác sĩ đã kết luận rồi. Mong lần sau bác sĩ lắng nghe bệnh nhân nhiều hơn.' },
-  { name: 'Diễm My', stars: 5, comment: 'Đặt lịch dễ, đúng giờ, không phải chờ lâu. Bác sĩ dễ gần, mình không ngại hỏi gì cả.' },
-  { name: 'Anh Khôi', stars: 4, comment: 'Mình hay hồi hộp khi gặp bác sĩ nhưng hôm nay cảm thấy thoải mái. Giải thích bệnh dễ hiểu, không dùng từ khó.' },
   { name: 'Tố Uyên', stars: 5, comment: 'Đã theo bác sĩ này mấy năm rồi. Không cần phải nói nhiều, rất tin tưởng 🙏' },
   { name: 'Bình An', stars: 3, comment: 'Bác sĩ giỏi nhưng hôm đó phòng chờ đông quá, đợi gần 1 tiếng. Mong cải thiện khâu sắp xếp lịch hơn.' },
 ];
@@ -40,7 +34,12 @@ const pickReviews = (doctorId) => {
 
 const InfoRow = ({ icon, text }) => (
   <View style={styles.infoRow}>
-    <Ionicons name={icon} size={16} color={Colors.primary} style={{ width: 22 }} />
+    <Ionicons
+      name={icon}
+      size={16}
+      color={Colors.primary}
+      style={{ width: 22 }}
+    />
     <Text style={styles.infoText}>{text}</Text>
   </View>
 );
@@ -83,7 +82,7 @@ export default function DoctorDetailScreen({ navigation, route }) {
               <View style={styles.statDivider} />
               <View style={styles.stat}>
                 <Text style={styles.statValue}>{doctor.totalReviews}</Text>
-                <Text style={styles.statLabel}>Bệnh nhân</Text>
+                <Text style={styles.statLabel}>Số bệnh nhân</Text>
               </View>
             </View>
           </View>
