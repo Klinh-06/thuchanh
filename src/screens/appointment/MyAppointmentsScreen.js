@@ -141,7 +141,7 @@ export default function MyAppointmentsScreen({ navigation }) {
         ListEmptyComponent={
           <View style={styles.empty}>
             <Ionicons name="calendar-outline" size={64} color={Colors.textLight} />
-            <Text style={styles.emptyTitle}>Chưa có lịch hẹn</Text>
+            <Text style={styles.emptyTitle}>Chưa có lịch hẹn nào</Text>
             <Text style={styles.emptyText}>
               {activeTab === 0 ? 'Đặt lịch khám ngay hôm nay!' : 'Không có dữ liệu'}
             </Text>
